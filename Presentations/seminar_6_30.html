@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Insurance induced behavior change in fisheries</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Nathaniel Grimes" />
+    <script src="libs/header-attrs-2.14/header-attrs.js"></script>
+    <link href="libs/remark-css-0.0.1/uwm-fonts.css" rel="stylesheet" />
+    <link rel="stylesheet" href="ucsb.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Insurance induced behavior change in fisheries
+]
+.subtitle[
+## PERC Summer Graduate Fellow Seminar 1
+]
+.author[
+### Nathaniel Grimes
+]
+.institute[
+### Bren School of Environmental Science, PERC
+]
+.date[
+### 6/14/2022
+]
+
+---
+
+
+
+# Is it possible to design incentive compatible fisheries productivity insurance?
+
+.column-left[![](imgs/fisher.png)]
+
+.column-center[![](imgs/biology.png)]
+
+.column-right[![](imgs/insurer.png)]
+
+---
+
+# Insurance protects against randomness
+
+- Fishing is a stochastic activity
+
+- Harmful environmental shocks severely impact the welfare of fishing communities and productivity of fish stocks
+
+- Risk averse fishers will value protection from shocks offered by productivity insurance
+
+- However, by adapting insurance fishers will change their behavior
+
+- How can we guarantee behavior changes that improve resource conservation?
+
+- Why hasn't insurance been implemented yet?
+
+---
+
+# One previous attempt at fishing productivty insurance
+
+Concluded a US RMA like revenue and yield insurance program would be unsuccessful. Instead better management is the solution (Herrmann et al., 2004)
+
+1. Insurance cost deemed to high to US RMA standards
+
+2. Difficulty in defining fishery peril (how exactly does weather impact a fisher?)
+
+3. Moral hazard of "fishing the insurance"
+  
+  - Operators staying in when earning payouts instead of exiting
+  
+No definitive follow up study in 20 years and interest in fizzled out
+  
+&lt;uc-blockquote&gt;However, insurance may be possible in other fisheries. New insurance products and fishery technology have come online to improve viability of insurance. Behavior was ignored in determining fisher responses and there was no formalization of the full moral hazard effect &lt;/uc-blockquote&gt;
+
+---
+class: highlight-last-item
+
+# There are three pathways for insurance to change behavior
+
+--
+
+1. Quid Pro Quo
+
+  -   Fishers want insurance and are willing to agree to conservation improving stipulations
+
+--
+
+2. Collection Action
+
+  -   Insurance leverages the political economy to pressure the regulator or promote collective cooperation
+  
+--
+
+3. Moral Hazards
+
+  -   "Risk Reduction" : With insurance I want to take more risk than before because insurance protects me
+  
+  -   "Chasing the Trigger" : If I change my behavior, I increase the probability of getting paid out
+  
+&lt;uc-blockquote&gt; My paper will focus on moral hazard behavior change because no matter the design or setting, some influence will be present. &lt;/uc-blockquote&gt;
+  
+  
+???
+
+Kotchen and Salant offer a possible theory justification for moral hazards in the short term for fisheries. Increase the cost initially to see biological improvements, insurers bear the initial cost.
+
+---
+
+# Moral Hazards can improve conservation if channeled correctly
+
+.pull-left[## Agriculture
+
+Theory shows insurance has ambiguous effects on risk-increasing inputs (Ramaswami, 1992)
+
+Crop revenue insurance reduces fertilizer use in winter wheat (Mishra et al., 2005)
+
+]
+
+.pull-right[## Fisheries
+
+Free riding (a moral hazard) reduces over exploitation of common-pool resources in cooperatives and partnerships (Heintzelman et al., 2008)
+
+Revenue sharing acts like insurance and promotes resource conservation (Tillman et al, 2018)
+
+
+]
+
+&lt;uc-blockquote&gt;The characteristics of the insurance and the specific fishery determine if a positive moral hazard effect will lead to incentive compatibility. &lt;/uc-blockquote&gt; 
+
+---
+
+# Insurance exists on a spectrum
+
+![](imgs/spectrum.png)
+
+---
+
+# Represent the spectrum through a utility maximizing fisher
+.big[
+$$
+`\begin{aligned}
+\max_{E,d}\mathbb{E}[U(E,B,d)]&amp;=F(\bar{T})\pi(E,B,d|T&lt;\bar{T})  &amp;\text{Bad State}\\ &amp;+(1-F(\bar{T}))\pi(E,B,d|T\ge\bar{T}) &amp;\text{Good State}
+\end{aligned}`
+$$
+]
+.pull-left[ .center[Variable definition]
+
+`\(T\)` = The observed index
+
+`\(\bar{T}\)` = The trigger value
+
+`\(E\)` = effort (input)
+
+`\(B\)` = Biomass (environment)
+
+`\(d\)` = payout
+
+Note: premium is endogenous on `\(d\)` and `\(F(\bar{T})\)`
+
+]
+
+.pull-right[.center[Conditions]
+
+Profit is concave in the effort input
+
+`\(\frac{\partial\pi}{\partial E}&gt;0\)`
+
+`\(\frac{\partial^2\pi}{\partial^2 E}&lt;0\)`
+
+---
+
+
+]
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script src="cols_macro.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
