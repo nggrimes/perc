@@ -55,7 +55,7 @@ References: https://github.com/jvcasillas/ru_xaringan
   .right-column {
     width: 70%;
     float: right;
-    padding-top: 1em;
+  
   }
 
 .pull-left {
@@ -377,7 +377,7 @@ h3 {
 
 .column-right {
   float: right;
-  width: 34%;
+  width: 33%;
 }
 
 .column-center {
@@ -407,4 +407,8 @@ h3 {
 
 .multicolcol {
   min-height: 1px;
+}
+
+.large {
+  font-size: 150%;
 }

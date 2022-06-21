@@ -32,13 +32,108 @@ class: center, middle, inverse, title-slide
 
 
 
-# Is it possible to design incentive compatible fisheries productivity insurance?
+# Insurance is an ideal tool to smooth risk
 
-.column-left[![](imgs/fisher.png)]
+- Fisheries are highly variable
 
-.column-center[![](imgs/biology.png)]
+- Climate Change will increase stochastic shocks
 
-.column-right[![](imgs/insurer.png)]
+- Overfished stocks more vulnerable to climate variability
+
+  -   Overfishing continues to impact fisheries, especially in developing countries
+  
+- Greater attention from the UN and governments to mitigate risk for risk-averse fishers
+
+- Insurance products being designed to combat climate shocks
+
+## .seagreen[No overarching framework to ask How? Where? and Should? insurance be used in fisheries]
+
+---
+
+# Potential to leverage insurance induced behavior change to correct externalities in fisheries
+
+## Moral Hazards are often undesirable in insurance
+
+1. Farmer intentionally reduces yield to get an insurance payout
+
+## .small[In fisheries with risk-sharing agreements, moral hazards leads to reduced overexploitation]
+
+2. Revenue club encourages free riders to reduce total harvest
+
+3. A fisher intentionally lowers harvest for an insurance payout leads to less overfishing
+
+???
+
+Heintzelman et al., 2008 and Tillman 2018 primary backbones in this idea.
+
+Kotchen and Salant offer a possible theory justification for moral hazards in the short term for fisheries. Increase the cost initially to see biological improvements, insurers bear the initial cost.
+
+
+---
+
+# What Moral Hazards exist in a fishery
+
+## Two components of Moral Hazards
+
+  -   "Risk Reduction" : With insurance I want to take more risk than before because insurance protects me
+  
+  -   "Chasing the Trigger" : If I change my behavior, I increase the probability of getting paid out
+  
+&lt;uc-blockquote&gt; How can we design insurance to induce positive behavior change? &lt;/uc-blockquote&gt;
+
+
+---
+
+# Insurance must be incentive compatible
+
+
+.column-left[![](imgs/fisher.png)
+
+.large[.bold[ Fishers want to buy insurance]]
+]
+
+.column-center[![](imgs/biology.png)
+
+.large[.bold[Insurance changes behavior to promote conservation]]
+
+]
+
+.column-right[![](imgs/insurer.png)
+
+ .large[.bold[Insurers willing to provide insurance]]
+ 
+]
+
+--
+
+## .seagreen[This research will focus on behavior change originating from moral hazards]
+
+
+---
+
+# Research Objectives at PERC
+
+## Build theoritical Model to formally characterize behavior change from Insurance Induced Moral Hazards
+
+1. How does insurance increase or decrease fishing effort?
+  
+  - Test across different triggers [Harvest - Area - Weather]
+  
+2. Will insurance improve fisher welfare?  
+
+3. Does adverse selection create leakage problems?
+
+## Simulate model outcomes with representative fishery and weather data
+
+1. Capture metrics of interest for insurance companies (Value at risk, Target Loss ratio, etc.)
+
+2. Show potential dynamic effects. 
+
+
+---
+class: title-slide-section-gold, center, middle
+
+# Extra Slides
 
 ---
 
@@ -173,6 +268,32 @@ Profit is concave in the effort input
 
 
 ]
+
+---
+
+# Why emphasize insurance now?
+--
+
+- .large[Climate change will increase variability exposing vulnerable fishing communities]
+
+--
+
+- .large[Initiatives from the UN, non-profits, and insurance companies gaining traction to launch insurance products]
+
+--
+
+- .large[ Need clearer understanding of novel intervention]
+  
+  - Provide justification or caution
+  
+  - Insurance application very different in fisheries than agriculture
+  
+--
+
+- .large[ Little discussion or emphasis on behavior change until now
+]
+
+---
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
@@ -261,6 +382,51 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     }
   }
 })();
+(function(time) {
+  var d2 = function(number) {
+    return ('0' + number).slice(-2); // left-pad 0 to minutes/seconds
+  },
+
+  time_format = function(total) {
+    var secs = Math.abs(total) / 1000;
+    var h = Math.floor(secs / 3600);
+    var m = Math.floor(secs % 3600 / 60);
+    var s = Math.round(secs % 60);
+    var res = d2(m) + ':' + d2(s);
+    if (h > 0) res = h + ':' + res;
+    return res;  // [hh:]mm:ss
+  },
+
+  slide_number_div = function(i) {
+    return document.getElementsByClassName('remark-slide-number').item(i);
+  },
+
+  current_page_number = function(i) {
+    return slide_number_div(i).firstChild.textContent;  // text "i / N"
+  };
+
+  var timer = document.createElement('span'); timer.id = 'slide-time-left';
+  var time_left = time, k = slideshow.getCurrentSlideIndex(),
+      last_page_number = current_page_number(k);
+
+  setInterval(function() {
+    time_left = time_left - 1000;
+    timer.innerHTML = ' ' + time_format(time_left);
+    if (time_left < 0) timer.style.color = 'red';
+  }, 1000);
+
+  slide_number_div(k).appendChild(timer);
+
+  slideshow.on('showSlide', function(slide) {
+    var i = slide.getSlideIndex(), n = current_page_number(i);
+    // reset timer when a new slide is shown and the page number is changed
+    if (last_page_number !== n) {
+      time_left = time; last_page_number = n;
+      timer.innerHTML = ' ' + time_format(time); timer.style.color = null;
+    }
+    slide_number_div(i).appendChild(timer);
+  });
+})(60000);
 // adds .remark-code-has-line-highlighted class to <pre> parent elements
 // of code chunks containing highlighted lines with class .remark-code-line-highlighted
 (function(d) {
