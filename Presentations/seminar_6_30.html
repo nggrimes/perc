@@ -110,22 +110,31 @@ Kotchen and Salant offer a possible theory justification for moral hazards in th
 
 
 ---
+name: milestones
 
 # Research Objectives at PERC
 
-## Build theoritical Model to formally characterize behavior change from Insurance Induced Moral Hazards
+## Build theoretical model to formally characterize behavior change from Insurance Induced Moral Hazards
 
-1. How does insurance increase or decrease fishing effort?
+.pull-left[[1.](#prop-1) How does insurance increase or decrease fishing effort?
   
   - Test across different triggers [Harvest - Area - Weather]
   
-2. Will insurance improve fisher welfare?  
+[2.](#prop-2) Will insurance improve fisher welfare?  
 
-3. Does adverse selection create leakage problems?
+]
+
+.pull-right[
+[3.](#prop-3) Could an insurer act as a social planner?
+
+[4.](#prop-4) Does adverse selection create leakage problems?
+
+[5.](#prop-5) Entry-Exit Dynamics
+]
 
 ## Simulate model outcomes with representative fishery and weather data
 
-1. Capture metrics of interest for insurance companies (Value at risk, Target Loss ratio, etc.)
+1. Capture metrics of interest for insurance companies (Expected Negative Profits, Required Capital, etc.)
 
 2. Show potential dynamic effects. 
 
@@ -134,22 +143,6 @@ Kotchen and Salant offer a possible theory justification for moral hazards in th
 class: title-slide-section-gold, center, middle
 
 # Extra Slides
-
----
-
-# Insurance protects against randomness
-
-- Fishing is a stochastic activity
-
-- Harmful environmental shocks severely impact the welfare of fishing communities and productivity of fish stocks
-
-- Risk averse fishers will value protection from shocks offered by productivity insurance
-
-- However, by adapting insurance fishers will change their behavior
-
-- How can we guarantee behavior changes that improve resource conservation?
-
-- Why hasn't insurance been implemented yet?
 
 ---
 
@@ -236,7 +229,7 @@ Revenue sharing acts like insurance and promotes resource conservation (Tillman 
 .big[
 $$
 `\begin{aligned}
-\max_{E,d}\mathbb{E}[U(E,B,d)]&amp;=F(\bar{T})\pi(E,B,d|T&lt;\bar{T})  &amp;\text{Bad State}\\ &amp;+(1-F(\bar{T}))\pi(E,B,d|T\ge\bar{T}) &amp;\text{Good State}
+\max_{E,d}\mathbb{E}[U]&amp;=F(\bar{T})\pi(E,B,d,\rho|T&lt;\bar{T})  &amp;\text{Bad State}\\ &amp;+(1-F(\bar{T}))\pi(E,B,\rho|T\ge\bar{T}) &amp;\text{Good State}
 \end{aligned}`
 $$
 ]
@@ -252,48 +245,132 @@ $$
 
 `\(d\)` = payout
 
-Note: premium is endogenous on `\(d\)` and `\(F(\bar{T})\)`
+`\(\rho\)` = premium
 
 ]
 
 .pull-right[.center[Conditions]
 
-Profit is concave in the effort input
+Utility is concave in the effort input
 
-`\(\frac{\partial\pi}{\partial E}&gt;0\)`
+`\(\frac{\partial U}{\partial E}&gt;0\)`
 
-`\(\frac{\partial^2\pi}{\partial^2 E}&lt;0\)`
+`\(\frac{\partial^2U}{\partial E^2}&lt;0\)`
 
----
+Profit increasing in shock
+
+`\(\frac{\partial \pi}{\partial B}&gt;0\)`
+
 
 
 ]
 
 ---
 
-# Why emphasize insurance now?
---
+# Active Insurance pushes
 
-- .large[Climate change will increase variability exposing vulnerable fishing communities]
+.pull-left[
+- Caribbean Oceans and Aquaculture Sustainability Facility (COAST)
 
---
+    - Index Insurance product to protect fishers from hurricanes and tropical storms
 
-- .large[Initiatives from the UN, non-profits, and insurance companies gaining traction to launch insurance products]
+    - Quid Pro Quo style of conservation, requires vessel regrestration 
+    
+- RARE Initiative to build index insurance in the Philippines
 
---
+    - Pilot enrolled 4,000 fishers
+    
+    - Expected to reach 50,000
+    
+    - Operated through Savings Clubs
+    
+    - Anecdotal behavior change
 
-- .large[ Need clearer understanding of novel intervention]
-  
-  - Provide justification or caution
-  
-  - Insurance application very different in fisheries than agriculture
-  
---
+]
 
-- .large[ Little discussion or emphasis on behavior change until now
+.pull-right[
+![Community insurance sign up in the Philippines. Credit: RARE](imgs/rare-phil.jpg)
 ]
 
 ---
+
+# Federal fishery diaster relief (Bellquist et al., 2021)
+
+![](imgs/diaster-tab.png)
+.center[
+&lt;img src="imgs/disaster-fig.png"
+     width="550px" height="470px"
+     /&gt;]
+     
+     
+---
+name: prop-1
+
+.bold[Proposition 1] *A change in insurance coverage leads to a change in the optimal effort of fishers. The sign and magnitude will change depending on the level of control a fisher has on the trigger.*
+
+Proposed solution strategy: First solve for the First Order Conditions with different insurance contracts.
+
+$$
+\frac{\partial \mathbb{E}[U]}{\partial E}=0
+$$
+
+Next, take the total derivative of the first order conditions with respect to the insurance coverage level.
+
+$$
+\frac{d FOC}{d d}=\frac{\frac{- \partial FOC}{\partial d}}{\frac{\partial FOC}{\partial E}}
+$$
+
+- Denominator of the RHS must be negative by the definition of the maximum. 
+
+- Only need to focus on the sign of `\(\frac{\partial FOC}{\partial d}\)`. 
+
+- Test three potential indices to cover the entire spectrum: Yield, Aggregate Yield, and Biomass.
+
+
+
+[Back to Objectives](#milestones)
+
+---
+name: prop-2
+
+.bold[Proposition 2] *Fishers choose a positive level of `\(d\)` to increase their welfare*
+
+- Proposition 1  pins down an optimal value, `\(E^*\)` 
+
+- Take FOC wrt d and sub in `\(E^*\)`, we ought to find some levels of `\(d\)` so that we test:
+
+$$
+d^*&gt;0
+$$
+
+[Back to Objectives](#milestones)
+
+---
+name: prop-3
+
+.bold[Proposition 3] *An insurer could act as a manager by setting a uniform, socially optimal coverage level for all fishers. How would the effort from the insurer optimized value compare to standard social planner allocation?*
+
+Allowing fishers to choose their own insurance levels does not completely resolve the group coordination problem. However, an insurer would presumably receive a more holistic picture of the fishery then any one fisher. In a two step optimization process, the insurer could aggregate individual effort allocations for a given coverage level then select the utility maximizing coverage to offer everyone. A potential extension could be to relax the actuarially fair assumption and allow insurers either some level of profit maximization or to include subsidies if we want to incentivize even greater conservation.
+
+[Back to Objectives](#milestones)
+
+---
+name: prop-4
+
+.bold[Proposition 4] *Heterogeneity in fishers leads to some fishers opting out of insurance, potentially chipping away at the conservation gains by free riding the increase in biomass*
+
+I would induce heterogeneity through varying costs or catchability coefficients to show different productivity. I would then find each groups, opt-in vs opt-out, effort levels. In aggregate this would show how much total effort is truly reduced leading to the desired conservation gains. An interesting extension would be to see if fishers know each others insurance decision or if they are kept in the dark. With complete information, higher productive types may be even less inclined to buy insurance and fish harder knowing how many of their competitors are reducing their effort. 
+
+[Back to Objectives](#milestones)
+
+---
+name:prop-5
+
+.bold[Proposition 5] *Does insurance keep fishers in when they would otherwise exit the fishery?*
+
+The Sockeye Salmon study posited this moral hazard as a reason to avoid using insurance. They only provided a conceptual argument (Herrmann et al., 2004). My model could test this theory by adding entry-exit dynamics where fishers can choose to leave the fishery if profits drop too low. Overcapitilzation is large issue in many fisheries. If insurance just leads more people to wait on the sidelines to increase harvest once the bad shock is over, it may inhibit complete stock recovery.
+
+[Back to Objectives](#milestones)
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
