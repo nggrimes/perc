@@ -116,8 +116,8 @@ thead, tfoot, tr:nth-child(even) { background: none; }
   
   /* Add image and change bg color */
   .title-slide {
-    background-image: url(https://raw.githubusercontent.com/nggrimes/perc/main/imgs/PERC%Logo%horiz_green%tag.png);
-    background-position: 85% 15%;
+    background-image: url(https://raw.githubusercontent.com/nggrimes/perc/main/Presentations/imgs/perc_logo.png);
+    background-position: 9% 15%;
     background-size: 400px;
     background-color: #fff;
       padding-left: 100px;  
