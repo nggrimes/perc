@@ -6,6 +6,8 @@
     <meta name="author" content="Nathaniel Grimes" />
     <script src="libs/header-attrs-2.14/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/uwm-fonts.css" rel="stylesheet" />
+    <link href="libs/tile-view-0.2.6/tile-view.css" rel="stylesheet" />
+    <script src="libs/tile-view-0.2.6/tile-view.js"></script>
     <link rel="stylesheet" href="ucsb.css" type="text/css" />
   </head>
   <body>
@@ -71,6 +73,7 @@ Kotchen and Salant offer a possible theory justification for moral hazards in th
 
 
 ---
+class: no-scribble
 
 # What Moral Hazards exist in a fishery
 
@@ -224,14 +227,12 @@ Kotchen and Salant offer a possible theory justification for moral hazards in th
 ![](imgs/spectrum.png)
 
 ---
-background-image: url(https://c.tenor.com/x7gTd1msD20AAAAd/flat-earth.gif)
----
 
 # Represent the spectrum through a utility maximizing fisher
 .big[
 $$
 `\begin{aligned}
-\max_{E,d}\mathbb{E}[U]&amp;=F(\bar{T})\pi(E,B,d,\rho|T&lt;\bar{T})  &amp;\text{Bad State}\\ &amp;+(1-F(\bar{T}))\pi(E,B,\rho|T\ge\bar{T}) &amp;\text{Good State}
+\max_{E,\gamma}\mathbb{E}[U]&amp;=F(\bar{T})\pi(E,B,\gamma,\rho|T&lt;\bar{T})  &amp;\text{Bad State}\\ &amp;+(1-F(\bar{T}))\pi(E,B,\rho|T\ge\bar{T}) &amp;\text{Good State}
 \end{aligned}`
 $$
 ]
@@ -245,7 +246,7 @@ $$
 
 `\(B\)` = Biomass (environment)
 
-`\(d\)` = coverage
+`\(\gamma\)` = coverage
 
 `\(\rho\)` = premium
 
@@ -293,12 +294,12 @@ $$
 Next, take the total derivative of the first order conditions with respect to the insurance coverage level.
 
 $$
-\frac{d FOC}{d d}=\frac{\frac{- \partial FOC}{\partial d}}{\frac{\partial FOC}{\partial E}}
+\frac{d FOC}{d \gamma}=\frac{\frac{- \partial FOC}{\partial \gamma}}{\frac{\partial FOC}{\partial E}}
 $$
 
 - Denominator of the RHS must be negative by the definition of the maximum. 
 
-- Only need to focus on the sign of `\(\frac{\partial FOC}{\partial d}\)`. 
+- Only need to focus on the sign of `\(\frac{\partial FOC}{\partial \gamma}\)`. 
 
 - Test three potential indices to cover the entire spectrum: Yield, Aggregate Yield, and Biomass.
 
@@ -313,10 +314,10 @@ name: prop-2
 
 - Proposition 1  pins down an optimal value, `\(E^*\)` 
 
-- Take FOC wrt `\(d\)` and sub in `\(E^*\)`, we ought to find some levels of `\(d\)` so that we test:
+- Take FOC wrt `\(\gamma\)` and sub in `\(E^*\)`, we ought to find some levels of `\(\gamma\)` so that we test:
 
 $$
-d^*&gt;0
+\gamma^*&gt;0
 $$
 
 [Back to Objectives](#milestones)
@@ -328,14 +329,16 @@ name: prop-3
 
 Use a Two-Step Optimization process
 
-1. Fishers optimize effort for any level of `\(d\)`
+1. Fishers optimize effort for any level of `\(\gamma\)`
 
-2. Insurer optimizes total welfare through accounting for aggregate effort and a uniform `\(d\)`
+2. Insurer optimizes total welfare through accounting for aggregate effort and a uniform `\(\gamma\)`
 
 Eventually relax the actuarially fiar assumption and allow insurers either some profit maximization, or subsidies to reach a social optimum.
 
 [Back to Objectives](#milestones)
 
+---
+background-image: url(https://c.tenor.com/x7gTd1msD20AAAAd/flat-earth.gif)
 ---
 name: prop-4
 
@@ -384,6 +387,52 @@ Revenue sharing acts like insurance and promotes resource conservation (Tillman 
 ]
 
 &lt;uc-blockquote&gt;The characteristics of the insurance and the specific fishery determine if a positive moral hazard effect will lead to incentive compatibility. &lt;/uc-blockquote&gt; 
+
+---
+
+# Basis Risk
+
+- How correlated is the index to production?
+
+- When does a fisher lose production, but isn't paid out? (Vice versa too)
+
+.center[![Jensen et al., 2014](imgs/basis_risk.png)]
+
+- Ag insurance seems content with 0.5 correlation at a minimum
+
+- Kenyan pastoralists still exposed to 32% of risk after purchasing index insurance (Jensen et al., 2014)
+
+---
+background-image: url(imgs/free-warming.png)
+background-size: contain
+
+---
+
+# Intution builder: Simple Effort Insurance
+
+.pull-left[
+
+Simple profit maximizing fisher with an effort insurance contract
+
+No uncertainty
+
+No risk aversion
+
+No premium
+
+The more effort they abate the greater the payout `\(\gamma*(\bar{e}-e_i)\)`
+
+Basically a payment for Ecosystem Service Model
+]
+
+
+
+
+
+&lt;div class="figure" style="text-align: right"&gt;
+&lt;img src="seminar_6_30_files/figure-html/unnamed-chunk-2-1.png" alt="The black dots represent the profit maximizing point for each insurance policy including no insurance policy in red. The horizontal black line represents the no insurance profit maximizing point. Any point above this line shows the fishers are better off with that level of effort and payout structure. Trigger is shown by the dashed vertical black line."  /&gt;
+&lt;p class="caption"&gt;The black dots represent the profit maximizing point for each insurance policy including no insurance policy in red. The horizontal black line represents the no insurance profit maximizing point. Any point above this line shows the fishers are better off with that level of effort and payout structure. Trigger is shown by the dashed vertical black line.&lt;/p&gt;
+&lt;/div&gt;
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

@@ -19,10 +19,13 @@ output:
       ratio: "16:9"
       countdown: 60000
 ---
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE,message = FALSE,warning=FALSE)
-```
 
+xaringanExtra::use_tile_view()
+#xaringanExtra::use_scribble()
+```
 
 # Insurance is an ideal tool to smooth risk
 
@@ -62,6 +65,7 @@ Kotchen and Salant offer a possible theory justification for moral hazards in th
 
 
 ---
+class: no-scribble
 
 # What Moral Hazards exist in a fishery
 
@@ -220,7 +224,7 @@ Kotchen and Salant offer a possible theory justification for moral hazards in th
 .big[
 $$
 \begin{aligned}
-\max_{E,d}\mathbb{E}[U]&=F(\bar{T})\pi(E,B,d,\rho|T<\bar{T})  &\text{Bad State}\\ &+(1-F(\bar{T}))\pi(E,B,\rho|T\ge\bar{T}) &\text{Good State}
+\max_{E,\gamma}\mathbb{E}[U]&=F(\bar{T})\pi(E,B,\gamma,\rho|T<\bar{T})  &\text{Bad State}\\ &+(1-F(\bar{T}))\pi(E,B,\rho|T\ge\bar{T}) &\text{Good State}
 \end{aligned}
 $$
 ]
@@ -234,7 +238,7 @@ $E$ = effort (input)
 
 $B$ = Biomass (environment)
 
-$d$ = coverage
+$\gamma$ = coverage
 
 $\rho$ = premium
 
@@ -282,12 +286,12 @@ $$
 Next, take the total derivative of the first order conditions with respect to the insurance coverage level.
 
 $$
-\frac{d FOC}{d d}=\frac{\frac{- \partial FOC}{\partial d}}{\frac{\partial FOC}{\partial E}}
+\frac{d FOC}{d \gamma}=\frac{\frac{- \partial FOC}{\partial \gamma}}{\frac{\partial FOC}{\partial E}}
 $$
 
 - Denominator of the RHS must be negative by the definition of the maximum. 
 
-- Only need to focus on the sign of $\frac{\partial FOC}{\partial d}$. 
+- Only need to focus on the sign of $\frac{\partial FOC}{\partial \gamma}$. 
 
 - Test three potential indices to cover the entire spectrum: Yield, Aggregate Yield, and Biomass.
 
@@ -302,10 +306,10 @@ name: prop-2
 
 - Proposition 1  pins down an optimal value, $E^*$ 
 
-- Take FOC wrt $d$ and sub in $E^*$, we ought to find some levels of $d$ so that we test:
+- Take FOC wrt $\gamma$ and sub in $E^*$, we ought to find some levels of $\gamma$ so that we test:
 
 $$
-d^*>0
+\gamma^*>0
 $$
 
 [Back to Objectives](#milestones)
@@ -317,9 +321,9 @@ name: prop-3
 
 Use a Two-Step Optimization process
 
-1. Fishers optimize effort for any level of $d$
+1. Fishers optimize effort for any level of $\gamma$
 
-2. Insurer optimizes total welfare through accounting for aggregate effort and a uniform $d$
+2. Insurer optimizes total welfare through accounting for aggregate effort and a uniform $\gamma$
 
 Eventually relax the actuarially fiar assumption and allow insurers either some profit maximization, or subsidies to reach a social optimum.
 
@@ -373,3 +377,113 @@ Revenue sharing acts like insurance and promotes resource conservation (Tillman 
 ]
 
 <uc-blockquote>The characteristics of the insurance and the specific fishery determine if a positive moral hazard effect will lead to incentive compatibility. </uc-blockquote> 
+
+---
+
+# Basis Risk
+
+- How correlated is the index to production?
+
+- When does a fisher lose production, but isn't paid out? (Vice versa too)
+
+.center[![Jensen et al., 2014](imgs/basis_risk.png)]
+
+- Ag insurance seems content with 0.5 correlation at a minimum
+
+- Kenyan pastoralists still exposed to 32% of risk after purchasing index insurance (Jensen et al., 2014)
+
+---
+background-image: url(imgs/free-warming.png)
+background-size: contain
+
+---
+
+# Intuition builder: Simple Effort Insurance
+
+.pull-left[
+
+Simple profit maximizing fisher with an effort insurance contract
+
+No uncertainty
+
+No risk aversion
+
+No premium
+
+The more effort they abate the greater the payout $\gamma*(\bar{e}-e_i)$
+
+Basically a payment for Ecosystem Service Model
+]
+
+```{r, echo=FALSE}
+pi<-function(f,b=100,c=10,shape=2){
+  pi=b*f-c*f^2
+  
+  return(pi)
+}
+# Insurance with payment based only on trigger threshold
+pi_in<-function(f,alpha=30,ft=5,b=100,c=10,shape=2){
+  
+  if(f<ft){
+    pi=b*f-c*f^shape+alpha*(ft-f)
+  }else{
+    pi=b*f-c*f^shape
+  }
+  return(pi)
+}  
+
+# Insurance with payment based of optimal effort
+pi_in_fb<-function(f,alpha=30,ft=5,b=100,c=10,shape=2){
+  fbar<-(b/(shape*c))^(1/(shape-1))
+  
+  if(f<ft){
+    pi=b*f-c*f^shape+alpha*(fbar-f)
+  }else{
+    pi=b*f-c*f^shape
+  }
+  return(pi)
+}
+```
+
+
+
+```{r, echo=FALSE,fig.cap="The black dots represent the profit maximizing point for each insurance policy including no insurance policy in red. The horizontal black line represents the no insurance profit maximizing point. Any point above this line shows the fishers are better off with that level of effort and payout structure. Trigger is shown by the dashed vertical black line.",fig.align='right'}
+library(tidyverse)
+library(latex2exp)
+
+x<-seq(0,10,by=.1)
+
+alpha_seq<-seq(0,100,by=15)
+graph_ft4<-data.frame(alpha=NA,f=NA,pi=NA)
+value<-vector(mode="numeric")
+for(i in 1:length(alpha_seq)){
+  for(k in 1:length(x)){
+    value[k]=pi_in(f=x[k],alpha = alpha_seq[i],ft=4)
+  }
+  
+  temp<-data.frame(alpha=rep(alpha_seq[i],length.out=length(x)),f=x,pi=value)
+  graph_ft4<-rbind(graph_ft4,temp)
+}
+
+max_dots<-graph_ft4 %>% 
+  drop_na() %>% 
+  group_by(alpha) %>% 
+  mutate(f=which.max(pi)) %>% 
+  summarize(max=max(pi),f=unique(f))
+
+max_dots$f<-x[max_dots$f]
+
+
+pi_graphf4<-graph_ft4 %>% 
+  drop_na() %>%  
+  ggplot(aes(x=f,y=pi,color=as.factor(alpha)))+
+    geom_line(size=2)+
+    scale_color_brewer(palette="Spectral",)+
+    theme_minimal()+
+  labs(title=expression(paste("Insurance policies with ",e["i"],'=4')),x="Fishing Effort",y="Profit",color=expression(paste(gamma)))+
+    geom_point(data=max_dots,aes(x=f,y=max),size=3,color="black")+
+  geom_segment(aes(x=4,y=0,xend=4,yend=240),size=1.5,color="black",linetype="dashed")+
+  geom_hline(yintercept=250)
+
+pi_graphf4
+```
