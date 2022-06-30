@@ -51,21 +51,32 @@ class: center, middle, inverse, title-slide
 
 ## .seagreen[No overarching framework to ask How? Where? and Should? insurance be used in fisheries]
 
+???
+
+Fishing is a risk activity, the environment can cause large fluctuations in stock abundance leading to uncertainty in where to harvest, and how many a fisher will get
+
+Insurance is a great way to smooth income in a risky env.
+
 ---
 
-# Potential to leverage insurance induced behavior change to correct externalities in fisheries
+# Potential to leverage insurance induced moral hazards to correct externalities in fisheries
+
+##.bold[Moral Hazard]: .gold[*"Decisions by insured agents that they would not otherwise take if they were uninsured"*]
 
 ## Moral Hazards are often undesirable in insurance
 
-1. Farmer intentionally reduces yield to get an insurance payout
+- Farmer intentionally reduces yield to get an insurance payout
 
 ## .small[In fisheries with risk-sharing agreements, moral hazards leads to reduced overexploitation]
 
-2. Revenue club encourages free riders to reduce total harvest
+- Revenue club encourages free riders to reduce total harvest
 
-3. A fisher intentionally lowers harvest for an insurance payout leads to less overfishing
 
 ???
+
+Sky diving example of moral hazard
+
+Need to know more about how moral hazards can change behavior
 
 Heintzelman et al., 2008 and Tillman 2018 primary backbones in this idea.
 
@@ -73,7 +84,6 @@ Kotchen and Salant offer a possible theory justification for moral hazards in th
 
 
 ---
-class: no-scribble
 
 # What Moral Hazards exist in a fishery
 
@@ -85,6 +95,11 @@ class: no-scribble
   
 &lt;uc-blockquote&gt; How can we design insurance to induce positive behavior change? &lt;/uc-blockquote&gt;
 
+???
+
+Conditions where the two components may have opposite, confounding effects
+
+If we can elicit positive change, we can make it incentive compatible
 
 ---
 
@@ -198,19 +213,17 @@ No definitive follow up study in 20 years and interest in fizzled out
 
 1. Quid Pro Quo
 
-  -   Fishers want insurance and are willing to agree to conservation improving stipulations
-
+  - Fishers want insurance and are willing to agree to conservation improving stipulations
 
 2. Collection Action
 
-  -   Insurance leverages the political economy to pressure the regulator or promote collective cooperation
-  
+  - Insurance leverages the political economy to pressure the regulator or promote collective cooperation
 
 3. Moral Hazards
 
-  -   "Risk Reduction" : With insurance I want to take more risk than before because insurance protects me
+  - "Risk Reduction" : With insurance I want to take more risk than before because insurance protects me
   
-  -   "Chasing the Trigger" : If I change my behavior, I increase the probability of getting paid out
+  - "Chasing the Trigger" : If I change my behavior, I increase the probability of getting paid out
   
 &lt;uc-blockquote&gt; My paper will focus on moral hazard behavior change because no matter the design or setting, some influence will be present. &lt;/uc-blockquote&gt;
   
@@ -232,17 +245,17 @@ Kotchen and Salant offer a possible theory justification for moral hazards in th
 .big[
 $$
 `\begin{aligned}
-\max_{E,\gamma}\mathbb{E}[U]&amp;=F(\bar{T})\pi(E,B,\gamma,\rho|T&lt;\bar{T})  &amp;\text{Bad State}\\ &amp;+(1-F(\bar{T}))\pi(E,B,\rho|T\ge\bar{T}) &amp;\text{Good State}
+\max_{e_i,\gamma}\mathbb{E}[U]&amp;=F(\bar{T})\pi(e_i,B,\gamma,\rho|T&lt;\bar{T})  &amp;\text{Bad State}\\ &amp;+(1-F(\bar{T}))\pi(e_i,B,\rho|T\ge\bar{T}) &amp;\text{Good State}
 \end{aligned}`
 $$
 ]
-.pull-left[ .center[Variable definition]
+.pull-left[ .center[.bold[Variable definition]]
 
 `\(T\)` = The observed index
 
 `\(\bar{T}\)` = The trigger value
 
-`\(E\)` = effort (input)
+`\(e_i\)` = effort (input)
 
 `\(B\)` = Biomass (environment)
 
@@ -252,22 +265,60 @@ $$
 
 ]
 
-.pull-right[.center[Conditions]
+.pull-right[.center[.bold[Conditions]]
 
 Utility is concave in the effort input
 
-`\(\frac{\partial U}{\partial E}&gt;0\)`
+`\(\frac{\partial U}{\partial e_i}&gt;0\)`
 
-`\(\frac{\partial^2U}{\partial E^2}&lt;0\)`
+`\(\frac{\partial^2U}{\partial e_i^2}&lt;0\)`
 
 Profit increasing in shock
 
 `\(\frac{\partial \pi}{\partial B}&gt;0\)`
 
+]
+
+---
+
+# Convert model to open access
+
+$$
+`\begin{aligned}
+\max_{e_i,\gamma}\mathbb{E}[U_i]&amp;=F(\bar{T}(e_i))(q(B,\sum_{i=1}^n e_i,e_i)-c(e_i)+\gamma-F(\bar{T})(e_i)\gamma) &amp;\text{Bad State} \\
+&amp;+(1-F(\bar{T}(e_i)))(q(B,\sum_{i=1}^n e_i,e_i)-c(e_i)-F(\bar{T})(e_i)\gamma)  &amp;\text{Good State}
+\end{aligned}`
+$$
+
+.pull-left[ .center[.bold[New variables definition]]
+
+`\(\Sigma_{i=1}^{n}e_i\)` = Total effort from all fishers
+
+`\(\Sigma_{j=1}^{n-1}e_j\)` = Everyone else's effort
+
+`\(c(e_i)\)` = Cost function
+
+`\(q(...)\)` = Production function
+
+`\(F(\bar{T}(e_i))\)` = Trigger dependent on effort
 
 
 ]
 
+.pull-right[
+Cost is increasing in the effort input
+
+`\(\frac{\partial c}{\partial e_i}&gt;0\)`
+
+Production increasing in individual effort, decreasing in total effort
+
+`\(\frac{\partial q}{\partial e_i}&gt;0\)` , `\(\frac{\partial q}{\partial \Sigma_{i=1}^{n}e_i}&lt;0\)`
+
+Production increasing in biomass
+
+`\(\frac{\partial q}{\partial B}&gt;0\)`
+
+]
 
 ---
 
@@ -338,8 +389,6 @@ Eventually relax the actuarially fiar assumption and allow insurers either some 
 [Back to Objectives](#milestones)
 
 ---
-background-image: url(https://c.tenor.com/x7gTd1msD20AAAAd/flat-earth.gif)
----
 name: prop-4
 
 .bold[Proposition 4] *Heterogeneity in fishers leads to some fishers opting out of insurance, potentially chipping away at the conservation gains by free riding the increase in biomass*
@@ -408,7 +457,7 @@ background-size: contain
 
 ---
 
-# Intution builder: Simple Effort Insurance
+# Intuition builder: Simple Effort Insurance
 
 .pull-left[
 
@@ -436,7 +485,6 @@ Basically a payment for Ecosystem Service Model
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
-<script src="cols_macro.js"></script>
 <script>var slideshow = remark.create({
 "highlightStyle": "github",
 "highlightLines": true,
@@ -521,51 +569,6 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     }
   }
 })();
-(function(time) {
-  var d2 = function(number) {
-    return ('0' + number).slice(-2); // left-pad 0 to minutes/seconds
-  },
-
-  time_format = function(total) {
-    var secs = Math.abs(total) / 1000;
-    var h = Math.floor(secs / 3600);
-    var m = Math.floor(secs % 3600 / 60);
-    var s = Math.round(secs % 60);
-    var res = d2(m) + ':' + d2(s);
-    if (h > 0) res = h + ':' + res;
-    return res;  // [hh:]mm:ss
-  },
-
-  slide_number_div = function(i) {
-    return document.getElementsByClassName('remark-slide-number').item(i);
-  },
-
-  current_page_number = function(i) {
-    return slide_number_div(i).firstChild.textContent;  // text "i / N"
-  };
-
-  var timer = document.createElement('span'); timer.id = 'slide-time-left';
-  var time_left = time, k = slideshow.getCurrentSlideIndex(),
-      last_page_number = current_page_number(k);
-
-  setInterval(function() {
-    time_left = time_left - 1000;
-    timer.innerHTML = ' ' + time_format(time_left);
-    if (time_left < 0) timer.style.color = 'red';
-  }, 1000);
-
-  slide_number_div(k).appendChild(timer);
-
-  slideshow.on('showSlide', function(slide) {
-    var i = slide.getSlideIndex(), n = current_page_number(i);
-    // reset timer when a new slide is shown and the page number is changed
-    if (last_page_number !== n) {
-      time_left = time; last_page_number = n;
-      timer.innerHTML = ' ' + time_format(time); timer.style.color = null;
-    }
-    slide_number_div(i).appendChild(timer);
-  });
-})(60000);
 // adds .remark-code-has-line-highlighted class to <pre> parent elements
 // of code chunks containing highlighted lines with class .remark-code-line-highlighted
 (function(d) {
