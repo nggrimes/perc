@@ -385,30 +385,3 @@ h3 {
   width: 33%;
 }
 
-/* Required: Clear floats after the columns */
-.multicolrow:after {
-    content: "";
-    display: table;
-    clear: both;
-}
-
-/*Optional: Color header boxes*/
-.multicolhead {
-    background-color:#FEBC11;
-    color: #3D4952;
-}
-
-.wordwrap { 
-   white-space: pre-wrap;      /* CSS3 */   
-   white-space: -moz-pre-wrap; /* Firefox */   
-   white-space: -o-pre-wrap;   /* Opera 7 */    
-   word-wrap: break-word;      /* IE */
-}
-
-.multicolcol {
-  min-height: 1px;
-}
-
-.large {
-  font-size: 150%;
-}
