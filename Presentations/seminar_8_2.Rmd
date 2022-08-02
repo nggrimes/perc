@@ -164,7 +164,7 @@ Where $y(E,z)$ is a fishers production function, $E$ is the input, $\alpha$ is m
 
 ---
 
-<iframe src="https://nggrimes.shinyapps.io/Fishery_index_insurance" width="1000" height="800"></iframe>
+<iframe src="https://nggrimes.shinyapps.io/Fishery_index_insurance" style="width: 1000px; height: 800px; border: 0"></iframe>
 
 ---
 
@@ -574,7 +574,8 @@ name: milestones
 
 2. Show potential dynamic effects. 
 
---- 
+---
+
 
 # Just in case graphs
 
