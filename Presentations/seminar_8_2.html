@@ -35,35 +35,48 @@ class: center, middle, inverse, title-slide
 
 
 
-# Insurance is an ideal tool to smooth risk
+# Individual fishers face a great deal of risk
 
-- Fisheries are highly variable
+.pull-left[
+- Not even the best fishers can predict exactly how much they will catch
 
-- Climate Change will increase stochastic shocks
+- Uncertainty of catch and income may incentivize fishers to choose biologically sub-optimal strategies
 
-- Overfished stocks more vulnerable to climate variability
+- Fishers can manage risk through input use
 
-  -   Overfishing continues to impact fisheries, especially in developing countries
-  
-- Greater attention from the UN and governments to mitigate risk for risk-averse fishers
+    - Overcapitalize with greater technology
+    - Choose days to avoid fishing (temporal effort)
+    - Diversify fishing portfolio (spatial effort)
 
-- Insurance products being designed to combat climate shocks
+- Limited access to financial tools to smooth risk
 
+
+]
+
+.pull-right[
+![Credit: Gonzalez Banda-Cruz](imgs/caleta_vessel.JPG)
+
+
+]
+
+## _Push by UN and NGOs to use Insurance as a means to transfer fisher risk_
 
 ???
 
-Fishing is a risk activity, the environment can cause large fluctuations in stock abundance leading to uncertainty in where to harvest, and how many a fisher will get
 
-Insurance is a great way to smooth income in a risky env.
 
 ---
 
 # Index Insurance leading candidate for fisheries insurance
 
-- Specifically designed for quick payouts, flexible trigger design, and minimize moral hazard
-- Concept figure for index insurance 
+
+&lt;img src="imgs/windex.png" width="90%" style="display: block; margin: auto;" /&gt;
+
 
 ## .seagreen[No overarching framework to ask How? Where? and Should? index insurance be used in fisheries]
+
+???
+Specifically designed for quick payouts, flexible trigger design, and minimize moral hazard
 
 ---
 
@@ -163,12 +176,6 @@ Insurance is a great way to smooth income in a risky env.
 
 ## .blue[Fishers maximize expected utility by selecting input and coverage]
 
-$$
-`\begin{aligned}
-\max_{E,\gamma}\mathbb{E}[U]&amp;=F(\bar{w})U_b(E,z,\gamma,p(\gamma)) &amp;\text{Bad State} \\
-&amp;+(1-F(\bar{w}))U_g(E,z,p(\gamma)) &amp;\text{Good State}
-\end{aligned}`
-$$
 
 .pull-left[
  Just and Pope Production Function
@@ -202,7 +209,7 @@ When `\(\beta&gt;0\)`, input risk increasing
 
 # Results
 
-&lt;iframe src="https://nggrimes.shinyapps.io/Fishery_index_insurance" width="1000" height="1000"&gt;&lt;/iframe&gt;
+&lt;iframe src="https://nggrimes.shinyapps.io/Fishery_index_insurance" width="1000" height="800"&gt;&lt;/iframe&gt;
 
 ---
 # Discussion
@@ -228,6 +235,132 @@ When `\(\beta&gt;0\)`, input risk increasing
 class: title-slide-section-gold, center, middle
 
 # Extra Slides
+
+---
+
+# Active Insurance pushes
+
+.pull-left[
+- Caribbean Oceans and Aquaculture Sustainability Facility (COAST)
+
+    - Index Insurance product to protect fishers from hurricanes and tropical storms
+
+    - Quid Pro Quo style of conservation, requires vessel regrestration 
+    
+- RARE Initiative to build index insurance in the Philippines
+
+    - Pilot enrolled 4,000 fishers
+    
+    - Expected to reach 50,000
+    
+    - Operated through Savings Clubs
+    
+    - Anecdotal behavior change
+
+]
+
+.pull-right[
+![Community insurance sign up in the Philippines. Credit: RARE](imgs/rare-phil.jpg)
+
+]
+
+---
+
+# One previous attempt at fishing productivty insurance
+
+Concluded a US RMA like revenue and yield insurance program would be unsuccessful. Instead better management is the solution (Herrmann et al., 2004)
+
+1. Insurance cost deemed to high to US RMA standards
+
+2. Difficulty in defining fishery peril (how exactly does weather impact a fisher?)
+
+3. Moral hazard of "fishing the insurance"
+  
+  - Operators staying in when earning payouts instead of exiting
+  
+No definitive follow up study in 20 years and interest in fizzled out
+  
+&lt;uc-blockquote&gt;However, insurance may be possible in other fisheries. New insurance products and fishery technology have come online to improve viability of insurance. Behavior was ignored in determining fisher responses and there was no formalization of the full moral hazard effect &lt;/uc-blockquote&gt;
+
+---
+
+# There are three pathways for insurance to change behavior
+
+1. Quid Pro Quo
+
+  - Fishers want insurance and are willing to agree to conservation improving stipulations
+
+2. Collection Action
+
+  - Insurance leverages the political economy to pressure the regulator or promote collective cooperation
+
+3. Moral Hazards
+
+  - "Risk Reduction" : With insurance I want to take more risk than before because insurance protects me
+  
+  - "Chasing the Trigger" : If I change my behavior, I increase the probability of getting paid out
+  
+&lt;uc-blockquote&gt; My paper will focus on moral hazard behavior change because no matter the design or setting, some influence will be present. &lt;/uc-blockquote&gt;
+  
+  
+???
+
+Kotchen and Salant offer a possible theory justification for moral hazards in the short term for fisheries. Increase the cost initially to see biological improvements, insurers bear the initial cost.
+
+---
+
+# Federal fishery diaster relief (Bellquist et al., 2021)
+
+![](imgs/diaster-tab.png)
+.center[
+&lt;img src="imgs/disaster-fig.png"
+     width="550px" height="470px"
+     /&gt;]
+     
+     
+---
+
+# Insurance exists on a spectrum
+
+![](imgs/spectrum.png)
+
+---
+
+# Detailed Mathmatical Representation
+
+$$
+`\begin{aligned}
+\max_{E,\gamma}\mathbb{E}[U]&amp;=F(\bar{w})U_b(E,z,\gamma,p(\gamma)) &amp;\text{Bad State} \\
+&amp;+(1-F(\bar{w}))U_g(E,z,p(\gamma)) &amp;\text{Good State}
+\end{aligned}`
+$$
+
+.pull-left[
+`\(E\)` = Effort input
+
+`\(\gamma\)` = insurance payout
+
+`\(\bar{w}\)` = trigger
+
+`\(z\)` = productivity shock
+
+`\(p(\gamma)\)` = premium
+
+]
+
+.pull-right[
+Utility is concave
+
+`\(\frac{\partial U}{\partial E}&gt;0\)`
+
+`\(\frac{\partial^2 U}{\partial E^2}&lt;0\)`
+]
+
+---
+
+# Adding Basis Risk into model 
+
+
 
 ---
 # Potential to leverage insurance induced moral hazards to correct externalities in fisheries
@@ -328,96 +461,6 @@ name: milestones
 
 2. Show potential dynamic effects. 
 
-
----
-
-# Active Insurance pushes
-
-.pull-left[
-- Caribbean Oceans and Aquaculture Sustainability Facility (COAST)
-
-    - Index Insurance product to protect fishers from hurricanes and tropical storms
-
-    - Quid Pro Quo style of conservation, requires vessel regrestration 
-    
-- RARE Initiative to build index insurance in the Philippines
-
-    - Pilot enrolled 4,000 fishers
-    
-    - Expected to reach 50,000
-    
-    - Operated through Savings Clubs
-    
-    - Anecdotal behavior change
-
-]
-
-.pull-right[
-![Community insurance sign up in the Philippines. Credit: RARE](imgs/rare-phil.jpg)
-
-]
-
----
-
-# One previous attempt at fishing productivty insurance
-
-Concluded a US RMA like revenue and yield insurance program would be unsuccessful. Instead better management is the solution (Herrmann et al., 2004)
-
-1. Insurance cost deemed to high to US RMA standards
-
-2. Difficulty in defining fishery peril (how exactly does weather impact a fisher?)
-
-3. Moral hazard of "fishing the insurance"
-  
-  - Operators staying in when earning payouts instead of exiting
-  
-No definitive follow up study in 20 years and interest in fizzled out
-  
-&lt;uc-blockquote&gt;However, insurance may be possible in other fisheries. New insurance products and fishery technology have come online to improve viability of insurance. Behavior was ignored in determining fisher responses and there was no formalization of the full moral hazard effect &lt;/uc-blockquote&gt;
-
----
-
-# There are three pathways for insurance to change behavior
-
-1. Quid Pro Quo
-
-  - Fishers want insurance and are willing to agree to conservation improving stipulations
-
-2. Collection Action
-
-  - Insurance leverages the political economy to pressure the regulator or promote collective cooperation
-
-3. Moral Hazards
-
-  - "Risk Reduction" : With insurance I want to take more risk than before because insurance protects me
-  
-  - "Chasing the Trigger" : If I change my behavior, I increase the probability of getting paid out
-  
-&lt;uc-blockquote&gt; My paper will focus on moral hazard behavior change because no matter the design or setting, some influence will be present. &lt;/uc-blockquote&gt;
-  
-  
-???
-
-Kotchen and Salant offer a possible theory justification for moral hazards in the short term for fisheries. Increase the cost initially to see biological improvements, insurers bear the initial cost.
-
----
-
-# Federal fishery diaster relief (Bellquist et al., 2021)
-
-![](imgs/diaster-tab.png)
-.center[
-&lt;img src="imgs/disaster-fig.png"
-     width="550px" height="470px"
-     /&gt;]
-     
-     
----
-
-# Insurance exists on a spectrum
-
-![](imgs/spectrum.png)
-
----
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
