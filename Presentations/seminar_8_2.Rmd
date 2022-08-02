@@ -1,5 +1,5 @@
 ---
-title: "Input Decisions and viability of Fisheries Index Insurance"
+title: "Input Decisions and Viability of Fisheries Index Insurance"
 subtitle: "PERC Summer Graduate Fellow Seminar 2"
 author: "Nathaniel Grimes"
 institute: "Bren School of Environmental Science, PERC"
@@ -31,7 +31,7 @@ xaringanExtra::use_tile_view()
 
 - Fishers can manage risk through input use
 
-    - Overcapitalize with greater technology
+    - Add more capital
     - Choose days to avoid fishing (temporal effort)
     - Diversify fishing portfolio (spatial effort)
 
@@ -52,7 +52,7 @@ knitr::include_graphics(here::here("Presentations","imgs","caleta_vessel.JPG"))
 
 ???
 
-
+Easy for recreational fishers to shrug off uncertainty, but what if this catch is your livelihood? The incentives to ensure catch may suddenly be higher pushing fishers to choose strategies that hurt the underlying biomass
 
 ---
 
@@ -68,6 +68,8 @@ knitr::include_graphics(here::here("Presentations","imgs","windex.png"))
 
 ???
 Specifically designed for quick payouts, flexible trigger design, and minimize moral hazard
+
+By offering an insurance contract fishers may reoptimze their effort decisions
 
 ---
 
@@ -101,7 +103,7 @@ Specifically designed for quick payouts, flexible trigger design, and minimize m
 
 - Empirically, maize farmers use more fertilizer in Kenya .small[(Sibiko et al., 2020)]
 
-- Pastures stock more animals leading to environmental degradation .small[(Bulte et al., 2021; Muller et al., 2011)]
+- Pastoralists stock more animals leading to environmental degradation .small[(Bulte et al., 2021; Muller et al., 2011)]
 ]
 
 .pull-right[
@@ -148,45 +150,27 @@ Specifically designed for quick payouts, flexible trigger design, and minimize m
 
 
 ---
+name: methods
 
-# Contributions to literature
+## .blue[Fishers maximize expected utility by selecting input and payouts]
 
-## 1) First index insurance model built through a fishery perspective
-
-- .seagreen[Conservation Finance, Fisheries management]
-
-## 2) First index insurance model to examine input use with risk effects
-
-- .seagreen[Risk mangement literature, insurance]
-
-## 3) First model adding basis risk into optimal input decision
-
-- .seagreen[Index Insurance literature]
-
----
-
-## .blue[Fishers maximize expected utility by selecting input and coverage]
-
+Integrate a Just and Pope Production function to find input risk effects
 
 .pull-left[
- Just and Pope Production Function
-$$
-\begin{aligned}
-q(E,z)&=E^\alpha+zE^\beta\\
+$$\begin{aligned}
+y(E,z)&=E^\alpha+zE^{\frac{\beta}{2}} \\
 z&\sim N(0,\sigma_z)
-\end{aligned}
-$$
+\end{aligned}$$
 ]
 
 .pull-right[
-
-.white[blank]
 
 When $\beta<0$, input risk decreasing
 
 When $\beta>0$, input risk increasing
 ]
 
+Where $y(E,z)$ is a fishers production function, $E$ is the input, $\alpha$ is mean production elasticity, $\beta$ is risk elasticity, and $z$ is random productivity shock. [Utility uses insurance contract](#math)
 
 ## .blue[Numerical simulation]
 
@@ -198,9 +182,24 @@ When $\beta>0$, input risk increasing
 
 ---
 
-# Results
-
 <iframe src="https://nggrimes.shinyapps.io/Fishery_index_insurance" width="1000" height="800"></iframe>
+
+---
+
+
+# Contributions to literature
+
+## 1) First index insurance model built through a fishery perspective
+
+- .seagreen[Conservation Finance, Fisheries management]
+
+## 2) First index insurance model to examine input use with risk effects
+
+- .seagreen[Risk management literature, insurance]
+
+## 3) First model adding basis risk into optimal input decision
+
+- .seagreen[Index Insurance literature]
 
 ---
 # Discussion
@@ -217,7 +216,7 @@ When $\beta>0$, input risk increasing
 
 - Move to two input model with mixed risk effects
 
-- Can we identify risk effects of a fishery without expensive and time-consuming empirically studies?
+- Can we identify risk effects of a fishery without expensive and time-consuming empirical studies?
 
 - Test correlations of fisheries with potential indices
 
@@ -316,15 +315,14 @@ Kotchen and Salant offer a possible theory justification for moral hazards in th
 ![](imgs/spectrum.png)
 
 ---
+name: math
 
 # Detailed Mathmatical Representation
 
-$$
-\begin{aligned}
+$$\begin{aligned}
 \max_{E,\gamma}\mathbb{E}[U]&=F(\bar{w})U_b(E,z,\gamma,p(\gamma)) &\text{Bad State} \\
 &+(1-F(\bar{w}))U_g(E,z,p(\gamma)) &\text{Good State}
-\end{aligned}
-$$
+\end{aligned}$$
 
 .pull-left[
 $E$ = Effort input
@@ -347,11 +345,139 @@ $\frac{\partial U}{\partial E}>0$
 $\frac{\partial^2 U}{\partial E^2}<0$
 ]
 
+Contract specifications:
+
+$$\begin{cases}
+\gamma & w<\bar{w} \\
+0 & w>\bar{w}
+\end{cases}$$
+
+
 ---
 
 # Adding Basis Risk into model 
 
+$$\begin{pmatrix}
+z \\
+w 
+\end{pmatrix}\sim N\left(\begin{pmatrix}
+0 \\
+0
+\end{pmatrix},\begin{pmatrix}
+\sigma_z^2 & \rho\sigma_z\sigma_w \\
+\rho\sigma_w\sigma_z & \sigma_w^2
+\end{pmatrix}\right)$$
 
+The joint distribution of the random variables $z$ and $w$ is connected through a copula that uses $\rho$ as the correlation between the index and productivity shock. Update the utility maximization with all variables.
+
+![](imgs/math.png)
+---
+name: basis
+
+# Demonstration of basis risk
+
+```{r}
+library(copula)
+library(tidyverse)
+
+  
+  
+  multi_perf<-mvdc(copula = normalCopula(param=1,dim=2),
+                     margins=c("norm","norm"),
+                     paramMargins = list(list(mean=0,sd=1),
+                                         list(mean=0,sd=1)))
+  
+   multi_low<-mvdc(copula = normalCopula(param=0.2,dim=2),
+                     margins=c("norm","norm"),
+                     paramMargins = list(list(mean=0,sd=1),
+                                         list(mean=0,sd=1)))
+   
+    multi_med<-mvdc(copula = normalCopula(param=0.8,dim=2),
+                     margins=c("norm","norm"),
+                     paramMargins = list(list(mean=0,sd=1),
+                                         list(mean=0,sd=1)))
+  n=1000
+  set.seed(123)
+  sim_perf<-as.data.frame(rMvdc(n,multi_perf))
+  
+  sim_low<-as.data.frame(rMvdc(n,multi_low))
+  
+  sim_med<-as.data.frame(rMvdc(n,multi_med))
+  
+  colnames(sim_low)=c("z","w")
+  colnames(sim_perf)=c("z","w")
+  colnames(sim_med)=c("z","w")
+  
+  low_plot<-ggplot(sim_low,aes(x=w,y=z))+
+    geom_point(size=2,color="#003660")+
+    scale_y_continuous(breaks=c(-2,-85,0,2),labels=c("-2","ztrig","0","2"),limits=c(-3,3))+
+    scale_x_continuous(breaks=c(-2,-85,0,2),labels=c("-2","wtrig","0","2"),limits=c(-3,3))+
+    theme_bw()+
+    ggtitle("Basis Risk with\ncorrelation equal to 0.2")+
+    theme(axis.title = element_text(size=24))+
+    theme(axis.text = element_text(size=20))+
+    theme(plot.title = element_text(size=28))+
+    annotate("label",x=-2,y=2.5,label="Insurance pays out\nProductivity good",fill="yellow",size=6)+
+    annotate("label",x=2,y=2.5,label="Insurance does not pay\nProductivity good",fill="green",size=6)+
+    annotate("label",x=-2,y=-2.5,label="Insurance pays out\nProductivity bad",fill="green",size=6)+
+    annotate("label",x=2,y=-2.5,label="Insurance does not pay\nProductivity bad",fill="red",size=6)+
+    geom_hline(yintercept=-.85,color="#FEBC11",size=1.75)+
+    geom_vline(xintercept=-.85,color="#FEBC11",size=1.75)
+  
+  med_plot<-ggplot(sim_med,aes(x=w,y=z))+
+    geom_point(size=2,color="#003660")+
+    scale_y_continuous(breaks=c(-2,-85,0,2),labels=c("-2","ztrig","0","2"),limits=c(-3,3))+
+    scale_x_continuous(breaks=c(-2,-85,0,2),labels=c("-2","wtrig","0","2"),limits=c(-3,3))+
+    theme_bw()+
+    ggtitle("Basis Risk with\ncorrelation equal to 0.8")+
+    theme(axis.title = element_text(size=24))+
+    theme(axis.text = element_text(size=20))+
+    theme(plot.title = element_text(size=28))+
+    annotate("label",x=-2,y=2.5,label="Insurance pays out\nProductivity good",fill="yellow",size=6)+
+    annotate("label",x=2,y=2.5,label="Insurance does not pay\nProductivity good",fill="green",size=6)+
+    annotate("label",x=-2,y=-2.5,label="Insurance pays out\nProductivity bad",fill="green",size=6)+
+    annotate("label",x=2,y=-2.5,label="Insurance does not pay\nProductivity bad",fill="red",size=6)+
+    geom_hline(yintercept=-.85,color="#FEBC11",size=1.75)+
+    geom_vline(xintercept=-.85,color="#FEBC11",size=1.75)
+  
+  perf_plt<-ggplot(sim_perf,aes(x=w,y=z))+
+    geom_point(size=2,color="#003660")+
+    scale_y_continuous(breaks=c(-2,-85,0,2),labels=c("-2","ztrig","0","2"),limits=c(-3,3))+
+    scale_x_continuous(breaks=c(-2,-85,0,2),labels=c("-2","wtrig","0","2"),limits=c(-3,3))+
+    theme_bw()+
+    ggtitle("Basis Risk with\ncorrelation equal to 1")+
+    theme(axis.title = element_text(size=24))+
+    theme(axis.text = element_text(size=20))+
+    theme(plot.title = element_text(size=28))+
+    annotate("label",x=-2,y=2.5,label="Insurance pays out\nProductivity good",fill="yellow",size=6)+
+    annotate("label",x=2,y=2.5,label="Insurance does not pay\nProductivity good",fill="green",size=6)+
+    annotate("label",x=-2,y=-2.5,label="Insurance pays out\nProductivity bad",fill="green",size=6)+
+    annotate("label",x=2,y=-2.5,label="Insurance does not pay\nProductivity bad",fill="red",size=6)+
+    geom_hline(yintercept=-.85,color="#FEBC11",size=1.75)+
+    geom_vline(xintercept=-.85,color="#FEBC11",size=1.75)
+  
+```
+
+.column-left[
+```{r}
+low_plot
+```
+
+]
+
+.column-center[
+```{r}
+med_plot
+```
+
+]
+
+.column-right[
+```{r}
+perf_plt
+```
+
+]
 
 ---
 # Potential to leverage insurance induced moral hazards to correct externalities in fisheries

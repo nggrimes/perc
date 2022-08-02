@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="" xml:lang="">
   <head>
-    <title>Input Decisions and viability of Fisheries Index Insurance</title>
+    <title>Input Decisions and Viability of Fisheries Index Insurance</title>
     <meta charset="utf-8" />
     <meta name="author" content="Nathaniel Grimes" />
     <script src="libs/header-attrs-2.14/header-attrs.js"></script>
@@ -15,7 +15,7 @@
 class: center, middle, inverse, title-slide
 
 .title[
-# Input Decisions and viability of Fisheries Index Insurance
+# Input Decisions and Viability of Fisheries Index Insurance
 ]
 .subtitle[
 ## PERC Summer Graduate Fellow Seminar 2
@@ -44,7 +44,7 @@ class: center, middle, inverse, title-slide
 
 - Fishers can manage risk through input use
 
-    - Overcapitalize with greater technology
+    - Add more capital
     - Choose days to avoid fishing (temporal effort)
     - Diversify fishing portfolio (spatial effort)
 
@@ -63,7 +63,7 @@ class: center, middle, inverse, title-slide
 
 ???
 
-
+Easy for recreational fishers to shrug off uncertainty, but what if this catch is your livelihood? The incentives to ensure catch may suddenly be higher pushing fishers to choose strategies that hurt the underlying biomass
 
 ---
 
@@ -77,6 +77,8 @@ class: center, middle, inverse, title-slide
 
 ???
 Specifically designed for quick payouts, flexible trigger design, and minimize moral hazard
+
+By offering an insurance contract fishers may reoptimze their effort decisions
 
 ---
 
@@ -110,7 +112,7 @@ Specifically designed for quick payouts, flexible trigger design, and minimize m
 
 - Empirically, maize farmers use more fertilizer in Kenya .small[(Sibiko et al., 2020)]
 
-- Pastures stock more animals leading to environmental degradation .small[(Bulte et al., 2021; Muller et al., 2011)]
+- Pastoralists stock more animals leading to environmental degradation .small[(Bulte et al., 2021; Muller et al., 2011)]
 ]
 
 .pull-right[
@@ -157,45 +159,27 @@ Specifically designed for quick payouts, flexible trigger design, and minimize m
 
 
 ---
+name: methods
 
-# Contributions to literature
+## .blue[Fishers maximize expected utility by selecting input and payouts]
 
-## 1) First index insurance model built through a fishery perspective
-
-- .seagreen[Conservation Finance, Fisheries management]
-
-## 2) First index insurance model to examine input use with risk effects
-
-- .seagreen[Risk mangement literature, insurance]
-
-## 3) First model adding basis risk into optimal input decision
-
-- .seagreen[Index Insurance literature]
-
----
-
-## .blue[Fishers maximize expected utility by selecting input and coverage]
-
+Integrate a Just and Pope Production function to find input risk effects
 
 .pull-left[
- Just and Pope Production Function
-$$
-`\begin{aligned}
-q(E,z)&amp;=E^\alpha+zE^\beta\\
+`$$\begin{aligned}
+y(E,z)&amp;=E^\alpha+zE^{\frac{\beta}{2}} \\
 z&amp;\sim N(0,\sigma_z)
-\end{aligned}`
-$$
+\end{aligned}$$`
 ]
 
 .pull-right[
-
-.white[blank]
 
 When `\(\beta&lt;0\)`, input risk decreasing
 
 When `\(\beta&gt;0\)`, input risk increasing
 ]
 
+Where `\(y(E,z)\)` is a fishers production function, `\(E\)` is the input, `\(\alpha\)` is mean production elasticity, `\(\beta\)` is risk elasticity, and `\(z\)` is random productivity shock. [Utility uses insurance contract](#math)
 
 ## .blue[Numerical simulation]
 
@@ -207,9 +191,24 @@ When `\(\beta&gt;0\)`, input risk increasing
 
 ---
 
-# Results
-
 &lt;iframe src="https://nggrimes.shinyapps.io/Fishery_index_insurance" width="1000" height="800"&gt;&lt;/iframe&gt;
+
+---
+
+
+# Contributions to literature
+
+## 1) First index insurance model built through a fishery perspective
+
+- .seagreen[Conservation Finance, Fisheries management]
+
+## 2) First index insurance model to examine input use with risk effects
+
+- .seagreen[Risk management literature, insurance]
+
+## 3) First model adding basis risk into optimal input decision
+
+- .seagreen[Index Insurance literature]
 
 ---
 # Discussion
@@ -226,7 +225,7 @@ When `\(\beta&gt;0\)`, input risk increasing
 
 - Move to two input model with mixed risk effects
 
-- Can we identify risk effects of a fishery without expensive and time-consuming empirically studies?
+- Can we identify risk effects of a fishery without expensive and time-consuming empirical studies?
 
 - Test correlations of fisheries with potential indices
 
@@ -325,15 +324,14 @@ Kotchen and Salant offer a possible theory justification for moral hazards in th
 ![](imgs/spectrum.png)
 
 ---
+name: math
 
 # Detailed Mathmatical Representation
 
-$$
-`\begin{aligned}
+`$$\begin{aligned}
 \max_{E,\gamma}\mathbb{E}[U]&amp;=F(\bar{w})U_b(E,z,\gamma,p(\gamma)) &amp;\text{Bad State} \\
 &amp;+(1-F(\bar{w}))U_g(E,z,p(\gamma)) &amp;\text{Good State}
-\end{aligned}`
-$$
+\end{aligned}$$`
 
 .pull-left[
 `\(E\)` = Effort input
@@ -356,11 +354,53 @@ Utility is concave
 `\(\frac{\partial^2 U}{\partial E^2}&lt;0\)`
 ]
 
+Contract specifications:
+
+`$$\begin{cases}
+\gamma &amp; w&lt;\bar{w} \\
+0 &amp; w&gt;\bar{w}
+\end{cases}$$`
+
+
 ---
 
 # Adding Basis Risk into model 
 
+`$$\begin{pmatrix}
+z \\
+w 
+\end{pmatrix}\sim N\left(\begin{pmatrix}
+0 \\
+0
+\end{pmatrix},\begin{pmatrix}
+\sigma_z^2 &amp; \rho\sigma_z\sigma_w \\
+\rho\sigma_w\sigma_z &amp; \sigma_w^2
+\end{pmatrix}\right)$$`
 
+The joint distribution of the random variables `\(z\)` and `\(w\)` is connected through a copula that uses `\(\rho\)` as the correlation between the index and productivity shock. Update the utility maximization with all variables.
+
+![](imgs/math.png)
+---
+name: basis
+
+# Demonstration of basis risk
+
+
+
+.column-left[
+![](seminar_8_2_files/figure-html/unnamed-chunk-4-1.png)&lt;!-- --&gt;
+
+]
+
+.column-center[
+![](seminar_8_2_files/figure-html/unnamed-chunk-5-1.png)&lt;!-- --&gt;
+
+]
+
+.column-right[
+![](seminar_8_2_files/figure-html/unnamed-chunk-6-1.png)&lt;!-- --&gt;
+
+]
 
 ---
 # Potential to leverage insurance induced moral hazards to correct externalities in fisheries
