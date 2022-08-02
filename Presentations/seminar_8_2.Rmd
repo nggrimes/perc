@@ -81,20 +81,6 @@ By offering an insurance contract fishers may reoptimze their effort decisions
 
 ---
 
-# Moral Hazards will always influence behavior
-
-##.bold[Moral Hazard]: .gold[*"Decisions by insured agents that they would not otherwise take if they were uninsured"*]
-
-## Two components of Moral Hazards
-
-  -   "Risk Reduction" : With insurance I want to take more risk than before because insurance protects me
-  
-  -   "Chasing the Trigger" : If I change my behavior, I increase the probability of getting paid out
-
-
-<uc-blockquote> Index Insurance negates "Chasing the Trigger", but is still subject to Risk Reduction and therefore may cause fishers to change their input decisions </uc-blockquote>
----
-
 # Index Insurance changes inputs, but little understanding of how or why.
 
 .pull-left[
@@ -113,7 +99,7 @@ By offering an insurance contract fishers may reoptimze their effort decisions
 
 - Risk-increasing inputs rise with insurance
 
-- Risk-decreasing lower with insurance
+- Risk-decreasing inputs lower with insurance
 ]
 
 <uc-blockquote> Fisheries use multiple inputs. How will index insurance change input use, and will it lead to conservation or further exacerbate overfishing?  </uc-blockquote>
@@ -122,29 +108,25 @@ By offering an insurance contract fishers may reoptimze their effort decisions
 
 # Index Insurance demand determined by multiple factors
 
-.column-left[## Basis Risk
+.pull-left[
+
+## Basis Risk
 
 - .moss[Paying premiums in bad states of the world without receiving payouts drastically hurts welfare .small[(Clarke 2016)]]
 
 - .moss[Fisheries have difficulty establishing clear weather impacts to productivity .small[(Free et al., 2019; Lehodey et al., 2006)]]
 ]
 
-.column-center[## Trigger designs
 
-- .moss[Fishers may have preferences to protect against catastrophic shocks or more frequent ones .small[(Lichtenberg and Iglesias, 2022)]]
+.pull-right[
 
-- .moss[Need consistent, verifiable indices]
-
-]
-
-.column-right[## Costs
+## Costs
 
 - .moss[Expensive premiums diminish fishers willingness to pay .small[Binswanger 2012]]
 
 - .moss[Competitive market insurance needs to make some profit beyond just covering payouts]
 ]
 
-.white[blank]
 
 <uc-blockquote> Is is possible to offer an insurance product through a competitive market in a new industry with unknown basis risk? </uc-blockquote>
 
@@ -272,6 +254,20 @@ No definitive follow up study in 20 years and interest in fizzled out
   
 <uc-blockquote>However, insurance may be possible in other fisheries. New insurance products and fishery technology have come online to improve viability of insurance. Behavior was ignored in determining fisher responses and there was no formalization of the full moral hazard effect </uc-blockquote>
 
+---
+
+# Moral Hazards will always influence behavior
+
+##.bold[Moral Hazard]: .gold[*"Decisions by insured agents that they would not otherwise take if they were uninsured"*]
+
+## Two components of Moral Hazards
+
+  -   "Risk Reduction" : With insurance I want to take more risk than before because insurance protects me
+  
+  -   "Chasing the Trigger" : If I change my behavior, I increase the probability of getting paid out
+
+
+<uc-blockquote> Index Insurance negates "Chasing the Trigger", but is still subject to Risk Reduction and therefore may cause fishers to change their input decisions </uc-blockquote>
 ---
 
 # There are three pathways for insurance to change behavior
@@ -578,3 +574,52 @@ name: milestones
 
 2. Show potential dynamic effects. 
 
+--- 
+
+# Just in case graphs
+
+```{r}
+comb_lowa<-read_csv(here::here("pres_data.csv"))
+
+uptake_m<-comb_lowa %>% 
+  mutate(buy=ifelse(gamma>0.00001,1,0)) %>%
+  group_by(m) %>% 
+  summarize(up=sum(buy)/length(buy)) %>% 
+  ggplot(aes(x=m,y=up))+
+  geom_path(size=2)+
+  scale_y_continuous(breaks = seq(0,1,by=.25),labels=scales::percent,limits = c(0,1))+
+  labs(y="Uptake of insurance",x="Premium Load Factor (m)")+
+  theme_bw()
+uptake_m
+```
+
+---
+
+
+```{r}
+opt_e<-comb_lowa %>% 
+  filter(gamma>0.00001) %>% 
+  filter(l_noi>0.0001) %>% 
+  mutate(pct_diff=(l_i-l_noi)/l_noi) %>% 
+  group_by(alpha,sigmal) %>% 
+  summarize(mean=mean(pct_diff),sd=sd(pct_diff))
+ggplot(opt_e,aes(x=sigmal,y=mean,fill=as.character(alpha)))+
+  geom_bar(stat="identity",position="dodge",color="black")+
+  scale_fill_manual(values=c("#003660","#FEBC11","#DCE1E5"))+
+  labs(x=expression(beta),y="Percent change",title="Average Percent Change in Optimal Input Allocation with Insurance",fill=expression(alpha))+
+  scale_y_continuous(labels=scales::percent)+
+  scale_x_continuous(breaks=seq(-1,1,by=.2),labels=c("-1","-0.8","-0.6","-0.4","-0.2","0","0.2","0.4","0.6","0.8","1"))+
+  theme_bw()
+```
+
+---
+
+# Trigger design also an important contributor to insurance viability
+
+.column-center[## Trigger designs
+
+- .moss[Fishers may have preferences to protect against catastrophic shocks or more frequent ones .small[(Lichtenberg and Iglesias, 2022)]]
+
+- .moss[Need consistent, verifiable indices]
+
+]
