@@ -97,10 +97,10 @@ By offering an insurance contract fishers may reoptimze their effort decisions
 <uc-blockquote> Index Insurance negates "Chasing the Trigger", but is still subject to Risk Reduction and therefore may cause fishers to change their input decisions </uc-blockquote>
 ---
 
-# Risk effects on input use
+# Risk effects influence input use
 
 .pull-left[
-- Input risk effects dictate whether a farmer wants to add more or less inputs .small[(Ramaswami 1993; Horowitz and Lichtenberg, 1993)]
+- Input risk effects dictate whether a farmer wants to add more or less inputs to mitigate risk impacts .small[(Ramaswami 1993; Horowitz and Lichtenberg, 1993)]
 
 - Applying more fertilizer increases volatility, but also yield
 
@@ -112,7 +112,7 @@ By offering an insurance contract fishers may reoptimze their effort decisions
 
 .pull-right[
 
-```{r fig.align='center',out.width="90%",fig.cap="Covers protect against frost, but dont increase average yield"}
+```{r fig.align='center',out.width="90%",fig.cap="Covers protect against frost, lowering variability"}
 knitr::include_graphics(here::here("Presentations","imgs","frost.jpg"))
 ```
 
@@ -125,7 +125,7 @@ knitr::include_graphics(here::here("Presentations","imgs","frost.jpg"))
 
 - Fishers respond to risk
 
-    - Inputs have more spatial and temporal variety than agriculture, so captains choose known locations and good times
+    - Inputs have more spatial and temporal variety than agriculture, so captains choose known locations and good times to fish
     
     - Fishers prefer consistency in harvest 
     
@@ -160,13 +160,32 @@ Empirically, marginal inputs such as fuel and labor may be risk-decreasing while
 
 
 ---
-name: model
+name: fishmodel
 
 # Traditional fishing models constrain fishing actions to risk-increasing 
 
-Show dv/de is always positive
+Let's use a fairly standard fishery production model that takes a Cobb-Douglas form where biomass (B) is a random variable with set mean $\bar{B}$
 
-I need to build a new model to incorporate risk effects
+.small[
+$$\begin{aligned}
+\pi&=qE^\alpha B-c(E) \\
+B&\sim N(\bar{B} ,\sigma^2)
+\end{aligned}$$
+]
+
+.bold[Risk effects are defined as a change in variability with a change in an input]
+
+.small[
+$$\begin{aligned}
+Var(\pi)&=q^2E^{2\alpha}\sigma^2_B \\
+\frac{\partial Var}{\partial E}&=2\alpha q^2E^{2\alpha-1}\sigma^2_B \\
+\frac{\partial Var}{\partial E}&>0 &\alpha\text{ always positive by definition}
+\end{aligned}$$
+]
+
+## I need to build a new model to incorporate flexible risk effects
+
+There is a set of functions called [Just-Pope Production functions](#jp) that allow flexible risk effects and are designed to empirically uncover agriculture risk effects
 
 ---
 
@@ -441,7 +460,24 @@ Kotchen and Salant offer a possible theory justification for moral hazards in th
 # Insurance exists on a spectrum
 
 ![](imgs/spectrum.png)
+---
+name: jp
 
+# Just-Pope Proudction functions require 8 postulates to be statisfied, I briefly show my purposed function satifies the key requirements
+
+
+_.bold[Postulate 2]_  _Positive marginal product expectations_
+$$\begin{aligned}
+\mathbb{E}[\pi]&=pqe_i^\alpha k(1-\frac{q(e_i+\sum^n_{j=1}e_j^\alpha)}{r})-c(e) \\
+\frac{\partial\mathbb{E}(\pi)}{\partial e_i}&=\alpha pq e_i^{\alpha-1}k(1-\frac{q(e_i+\sum^n_{j=1}e_j^\alpha)}{r})-\frac{pq^2e_i^\alpha k}{r}
+\end{aligned}$$
+
+_.bold[Postulate 5]_  _Increasing, decreasing, or constant marginal risk should all be possibilities_
+
+$$\begin{aligned}
+V(\pi)&=(pq)^2e_i^{2\beta}\sigma^2_z \\
+\frac{\partial V}{\partial e_i}&\lesseqgtr2\beta(pq)^2e_i^{2\beta-1}\sigma^2_z &\text{Depends on sign of }\beta
+\end{aligned}$$
 
 ---
 name: basis
