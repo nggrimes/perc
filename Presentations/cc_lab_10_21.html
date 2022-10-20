@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Index Insurance induced behavior Change</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Nathaniel Grimes" />
+    <meta name="date" content="2022-10-21" />
+    <script src="libs/header-attrs-2.17/header-attrs.js"></script>
+    <link href="libs/remark-css-0.0.1/uwm-fonts.css" rel="stylesheet" />
+    <link href="libs/tile-view-0.2.6/tile-view.css" rel="stylesheet" />
+    <script src="libs/tile-view-0.2.6/tile-view.js"></script>
+    <link rel="stylesheet" href="ucsb.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Index Insurance induced behavior Change
+]
+.subtitle[
+## Costello Lab Meeting
+]
+.author[
+### Nathaniel Grimes
+]
+.institute[
+### Bren School of Environmental Science
+]
+.date[
+### 10/21/2022
+]
+
+---
+
+
+
+
+# Fishing is a risky business
+
+.pull-left[
+- Fishing is vulnerable to stochastic weather shocks
+
+- Shocks are becoming more frequent and devastating
+
+    - Marine Heat Wave in 2015 in the Pacific
+    
+    - Warm water and disease collapsed 95% of the New York scallop fishery in 2019
+
+- Limited access to financial tools to smooth risk and stabilize income
+]
+
+.pull-right[
+&lt;img src="imgs/snow_crab.png" width="1745" /&gt;
+
+ "Hope and pray" is their best current response
+]
+
+## _Push to use Insurance as a means to transfer fisher risk_
+
+???
+
+Easy for recreational fishers to shrug off uncertainty, but what if this catch is your livelihood? The incentives to ensure catch may suddenly be higher pushing fishers to choose strategies that hurt the underlying biomass
+
+---
+
+# Index Insurance leading candidate for fisheries insurance
+
+
+&lt;img src="imgs/windex.png" width="90%" style="display: block; margin: auto;" /&gt;
+
+
+## .seagreen[No overarching framework to ask How? Where? and Should? index insurance be used in fisheries]
+
+???
+Specifically designed for quick payouts, flexible trigger design, and minimize moral hazard
+
+By offering an insurance contract fishers may reoptimze their effort decisions
+
+---
+
+# Research Questions
+
+## 1) Will index insurance change optimal input use?
+
+  - Overfishing remains a driver of fishery collapse
+    
+  - At a minimum, insurance should not increase fishing pressures
+    
+  - Perhaps it incentives behavior change that relieves fishing pressure
+
+## 2) What conditions lead to viable index insurance products where fishers demand insurance and insurers willing to provide?
+
+---
+
+# Insurance leads to moral hazards
+
+##.bold[Moral Hazard]: .gold[*"Decisions by insured agents that they would not otherwise take if they were uninsured"*]
+
+## Two components of Moral Hazards
+
+  -   "Risk Reduction" : With insurance I want to take more risk than before because insurance protects me
+  
+  -   "Chasing the Trigger" : If I change my behavior, I increase the probability of getting paid out
+
+
+&lt;uc-blockquote&gt; Index Insurance negates "Chasing the Trigger", but is still subject to Risk Reduction and therefore may cause fishers to change their input decisions &lt;/uc-blockquote&gt;
+---
+
+# Risk effects on input use
+
+.pull-left[
+- Input risk effects dictate whether a farmer wants to add more or less inputs .small[(Ramaswami 1993; Horowitz and Lichtenberg, 1993)]
+
+- Applying more fertilizer increases volatility, but also yield
+
+- Risk-increasing inputs rise with insurance
+
+- Risk-decreasing inputs lower with insurance
+
+]
+
+.pull-right[
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="imgs/frost.jpg" alt="Covers protect against frost, but dont increase average yield" width="90%" /&gt;
+&lt;p class="caption"&gt;Covers protect against frost, but dont increase average yield&lt;/p&gt;
+&lt;/div&gt;
+
+]
+---
+
+# Do fishery inputs have risk effects?
+
+- Probably, but not often described or modeled
+
+- Fishers respond to risk
+
+    - Inputs have more spatial and temporal variety than agriculture, so captains choose known locations and good times
+    
+    - Fishers prefer consistency in harvest 
+    
+    - "Sometimes if I don't make enough money to pay my crew, I make one or two days more. If I can get $5,000 or $10,000 more it's OK"  (Holland 2008)
+
+
+Empirically, marginal inputs such as fuel and labor may be risk-decreasing while fixed inputs such as vessel size may be risk-increasing .small[(Asche et al., 2020)]
+
+
+---
+
+# Index Insurance changes input use
+
+.pull-left[
+
+## Empircal Evidence
+
+- Maize farmers use more fertilizer in Kenya .small[(Sibiko et al., 2020)]
+
+- Relaxing capital constraints for low income farmers
+]
+
+.pull-right[
+## Theory in the common pool
+
+- Pastoralists stock more animals leading to environmental degradation .small[(Bulte et al., 2021; Muller et al., 2011)]
+
+- Both studies implicitly assume risk increasing inputs
+]
+
+&lt;uc-blockquote&gt; Fisheries use multiple inputs with possible risk effects. How does fishing pressure respond to index insurance under various risk effects?  &lt;/uc-blockquote&gt;
+
+
+---
+name: model
+
+# Traditional fishing models constrain fishing actions to risk-increasing 
+
+Show dv/de is always positive
+
+I need to build a new model to incorporate risk effects
+
+---
+
+# Profit is subject to an additive shock to biomass
+
+
+`$$\begin{aligned}
+\pi(e,z)&amp;=pqe^\alpha(B+z)-c(e) \\
+z&amp;\sim N(0,\sigma_z)
+\end{aligned}$$`
+
+.pull-left[
+Where `\(\pi(e,z)\)` is fisher profit
+
+`\(e\)` is the input
+
+`\(q\)` is the catchability coefficient
+
+`\(p\)` is price
+
+]
+.pull-right[
+
+`\(B\)` is the expected fish population
+
+`\(\alpha\)` is the mean production elasticity 
+
+`\(z\)` is random normally distributed shock
+
+`\(c(e)\)` is a cost function
+]
+
+## Add risk effects by allowing the input more control on the shock term
+
+
+`$$\begin{aligned}
+&amp;\pi(e,z)=pqe^\alpha B+pqe^\beta z-c(e) \\ \\
+\text{When }&amp; \beta&lt;0 \text{, input is risk decreasing} \\
+\text{When }&amp; \beta&gt;0 \text{, input is risk increasing}
+\end{aligned}$$`
+
+---
+
+# Fisheriers are dynamic and are common pool resources
+
+- Assume fish stock has logistic growth based on the expected amount of biomass and n fishers actively harvest the resource
+
+`$$\begin{aligned}
+\frac{dB}{dt}&amp;=rB(1-\frac{B}{K})-q\sum^n_{i=1}e_i^\alpha B &amp;\text{Equilibrium when }\frac{dB}{dt}=0 \\
+B&amp;=k(1-\frac{q\sum^n_{i=1}e_i^\alpha}{r}) &amp;\text{Solve for B}
+\end{aligned}$$`
+
+.center[.bold[Sub bioeconomic equilibrium biomass back into individual profit function]]
+
+`$$\pi_i(e_i,z)=pqe_i^\alpha k(1-\frac{q(e_i^\alpha+\sum^{n-1}_{j=1}e_j^\alpha}{r})+pqe_i^\beta z-c(e_i)$$`
+
+---
+
+## .blue[Fishers maximize expected utility by choosing individual effort and insurance payouts] 
+
+
+`$$\begin{aligned}
+\max_{e_i,\gamma}\mathbb{E}[U]&amp;=F(\bar{w})U_b(\pi_i(e_i,z),\gamma,p(\gamma)) &amp;\text{Bad State} \\
+&amp;+(1-F(\bar{w}))U_g(\pi_i(e_i,z),p(\gamma)) &amp;\text{Good State}
+\end{aligned}$$`
+
+.pull-left[
+
+`\(\gamma\)` = insurance payout
+
+`\(\bar{w}\)` = trigger
+
+`\(p(\gamma)\)` = premium
+
+]
+
+.pull-right[
+.bold[Utility is concave]
+
+`\(\frac{\partial U}{\partial E}&gt;0\)`
+
+`\(\frac{\partial^2 U}{\partial E^2}&lt;0\)`
+]
+
+.center[.bold[Contract specifications:]]
+
+`$$\begin{cases}
+\gamma &amp; w&lt;\bar{w} \\
+0 &amp; w&gt;\bar{w}
+\end{cases}$$`
+
+
+.center[.bold[Observed weather w is jointly distributed with the productivity shock and [leads to basis risk](#basis)]]
+.small[
+`$$\begin{pmatrix}
+z \\
+w 
+\end{pmatrix}\sim N\left(\begin{pmatrix}
+0 \\
+0
+\end{pmatrix},\begin{pmatrix}
+\sigma_z^2 &amp; \rho\sigma_z\sigma_w \\
+\rho\sigma_w\sigma_z &amp; \sigma_w^2
+\end{pmatrix}\right)$$`
+
+]
+
+---
+name: methods
+
+## .blue[Find solutions for a symmetric Nash equilibirum and a social planner]
+
+.pull-left[
+- I need to think on how to numerically solve the NE
+
+- For now, I model just one fisher with a given equilibrium stock
+]
+
+.pull-right[Social Planner solves all `\(e_i\)` simultaneously 
+
+- Since its symmetric sub in `\(\pi=pqe_i^\alpha k(1-\frac{qne_i^\alpha}{r})+pqe_i^\beta z-c(e_i)\)`
+]
+
+## .blue[Numerical simulation]
+
+- Monte Carlo simulation with 1000 draws from copula linked marginal distributions of `\(z\)` and `\(w\)`
+
+- Non-linear optimization algorithm maximizes input and payout choices
+
+- Run 19,800 scenarios for each combination of variables .small[[Risk Aversion, Basis Risk Correlation, Premium Loading Factor, Trigger Coverage, Input Risk Effects]]
+
+
+---
+
+# Contributions to literature
+
+## 1) First index insurance model built through a fishery perspective
+
+- .seagreen[Conservation Finance, Fisheries management]
+
+## 2) First index insurance model to examine input use with risk effects
+
+- .seagreen[Risk management literature, insurance]
+
+## 3) First model adding basis risk into optimal input decision
+
+- .seagreen[Index Insurance literature]
+
+---
+# Discussion
+
+.bold[.blue[Index Insurance is feasible in fisheries, but will have different impacts depending on the risk effects of the input]]
+
+## Immediate Questions
+
+- Do you buy the risk effect specification and its importance?
+
+- What other considerations would you consider for proving insurance feasibility?
+
+## Future goals and questions
+
+- Move to two input model with mixed risk effects
+
+- Can we identify risk effects of a fishery without expensive and time-consuming empirical studies?
+
+- Test correlations of fisheries with potential indices
+
+
+---
+class: title-slide-section-gold, center, middle
+
+# Extra Slides
+
+---
+
+# Active Insurance pushes
+
+.pull-left[
+- Caribbean Oceans and Aquaculture Sustainability Facility (COAST)
+
+    - Index Insurance product to protect fishers from hurricanes and tropical storms
+
+    - Quid Pro Quo style of conservation, requires vessel regrestration 
+    
+- RARE Initiative to build index insurance in the Philippines
+
+    - Pilot enrolled 4,000 fishers
+    
+    - Expected to reach 50,000
+    
+    - Operated through Savings Clubs
+    
+    - Anecdotal behavior change
+
+]
+
+.pull-right[
+![Community insurance sign up in the Philippines. Credit: RARE](imgs/rare-phil.jpg)
+
+]
+
+---
+
+# One previous attempt at fishing productivty insurance
+
+Concluded a US RMA like revenue and yield insurance program would be unsuccessful. Instead better management is the solution (Herrmann et al., 2004)
+
+1. Insurance cost deemed to high to US RMA standards
+
+2. Difficulty in defining fishery peril (how exactly does weather impact a fisher?)
+
+3. Moral hazard of "fishing the insurance"
+  
+  - Operators staying in when earning payouts instead of exiting
+  
+No definitive follow up study in 20 years and interest in fizzled out
+  
+&lt;uc-blockquote&gt;However, insurance may be possible in other fisheries. New insurance products and fishery technology have come online to improve viability of insurance. Behavior was ignored in determining fisher responses and there was no formalization of the full moral hazard effect &lt;/uc-blockquote&gt;
+
+---
+
+# Moral Hazards will always influence behavior
+
+##.bold[Moral Hazard]: .gold[*"Decisions by insured agents that they would not otherwise take if they were uninsured"*]
+
+## Two components of Moral Hazards
+
+  -   "Risk Reduction" : With insurance I want to take more risk than before because insurance protects me
+  
+  -   "Chasing the Trigger" : If I change my behavior, I increase the probability of getting paid out
+
+
+&lt;uc-blockquote&gt; Index Insurance negates "Chasing the Trigger", but is still subject to Risk Reduction and therefore may cause fishers to change their input decisions &lt;/uc-blockquote&gt;
+---
+
+# There are three pathways for insurance to change behavior
+
+1. Quid Pro Quo
+
+  - Fishers want insurance and are willing to agree to conservation improving stipulations
+
+2. Collection Action
+
+  - Insurance leverages the political economy to pressure the regulator or promote collective cooperation
+
+3. Moral Hazards
+
+  - "Risk Reduction" : With insurance I want to take more risk than before because insurance protects me
+  
+  - "Chasing the Trigger" : If I change my behavior, I increase the probability of getting paid out
+  
+&lt;uc-blockquote&gt; My paper will focus on moral hazard behavior change because no matter the design or setting, some influence will be present. &lt;/uc-blockquote&gt;
+  
+  
+???
+
+Kotchen and Salant offer a possible theory justification for moral hazards in the short term for fisheries. Increase the cost initially to see biological improvements, insurers bear the initial cost.
+
+---
+
+# Federal fishery diaster relief (Bellquist et al., 2021)
+
+![](imgs/diaster-tab.png)
+.center[
+&lt;img src="imgs/disaster-fig.png"
+     width="550px" height="470px"
+     /&gt;]
+     
+     
+---
+
+# Insurance exists on a spectrum
+
+![](imgs/spectrum.png)
+
+
+---
+name: basis
+
+# Adding Basis Risk into model 
+
+`$$\begin{pmatrix}
+z \\
+w 
+\end{pmatrix}\sim N\left(\begin{pmatrix}
+0 \\
+0
+\end{pmatrix},\begin{pmatrix}
+\sigma_z^2 &amp; \rho\sigma_z\sigma_w \\
+\rho\sigma_w\sigma_z &amp; \sigma_w^2
+\end{pmatrix}\right)$$`
+
+The joint distribution of the random variables `\(z\)` and `\(w\)` is connected through a copula that uses `\(\rho\)` as the correlation between the index and productivity shock. Update the utility maximization with all variables.
+
+`$$\begin{aligned}
+\mathbb{E}[U]&amp;=\int^\infty_{-\infty}\int^{\bar{w}}_{-\infty}f(z,w)(1-e^{-a(pqe_i^\alpha k(1-\frac{q(e_i+\sum^{n-1}_je_j)}{r})-c(e_i)+\gamma-\gamma F(\bar{w}))}dwdz &amp;\text{Bad State} \\
+&amp;+\int^\infty_{-\infty}\int^\infty_{\bar{w}}f(z,w)(1-e^{-a(pqe_i^\alpha k(1-\frac{q(e_i+\sum^{n-1}_je_j)}{r})-c(e_i)-\gamma F(\bar{w}))}dwdz &amp;\text{Good State}
+\end{aligned}$$`
+
+
+---
+
+# Demonstration of basis risk
+
+
+
+.column-left[
+![](cc_lab_10_21_files/figure-html/unnamed-chunk-5-1.png)&lt;!-- --&gt;
+
+]
+
+.column-center[
+![](cc_lab_10_21_files/figure-html/unnamed-chunk-6-1.png)&lt;!-- --&gt;
+
+]
+
+.column-right[
+![](cc_lab_10_21_files/figure-html/unnamed-chunk-7-1.png)&lt;!-- --&gt;
+
+]
+
+
+---
+
+# Index Insurance demand determined by multiple factors
+
+.pull-left[
+
+## Basis Risk
+
+- .moss[Paying premiums in bad states of the world without receiving payouts drastically hurts welfare .small[(Clarke 2016)]]
+
+- .moss[Fisheries have difficulty establishing clear weather impacts to productivity .small[(Free et al., 2019; Lehodey et al., 2006)]]
+]
+
+
+.pull-right[
+
+## Costs
+
+- .moss[Expensive premiums diminish fishers willingness to pay .small[Binswanger 2012]]
+
+- .moss[Competitive market insurance needs to make some profit beyond just covering payouts]
+]
+
+
+&lt;uc-blockquote&gt; Is is possible to offer an insurance product through a competitive market in a new industry with unknown basis risk? &lt;/uc-blockquote&gt;
+
+
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
