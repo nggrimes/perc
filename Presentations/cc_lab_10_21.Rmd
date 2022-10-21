@@ -315,7 +315,11 @@ name: methods
 
 - Non-linear optimization algorithm maximizes input and payout choices
 
-- Run 19,800 scenarios for each combination of variables .small[[Risk Aversion, Basis Risk Correlation, Premium Loading Factor, Trigger Coverage, Input Risk Effects]]
+- Run 1,200 scenarios for each combination of variables .small[[Risk Aversion, Basis Risk Correlation, Premium Loading Factor, Trigger Coverage, Input Risk Effects]]
+
+---
+
+<iframe src="https://nggrimes.shinyapps.io/common-pool-insurance/" style="width: 1000px; height: 800px; border: 0"></iframe>
 
 
 ---
