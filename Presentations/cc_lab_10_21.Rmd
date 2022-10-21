@@ -1,5 +1,5 @@
 ---
-title: "Index Insurance induced behavior Change"
+title: "Index Insurance Induced Behavior Change"
 subtitle: "Costello Lab Meeting"
 author: "Nathaniel Grimes"
 institute: "Bren School of Environmental Science"
@@ -104,9 +104,9 @@ By offering an insurance contract fishers may reoptimze their effort decisions
 
 - Applying more fertilizer increases volatility, but also yield
 
-- Risk-increasing inputs rise with insurance
+- Risk-increasing inputs rise with indemnity insurance
 
-- Risk-decreasing inputs lower with insurance
+- Risk-decreasing inputs lower with indemnity insurance
 
 ]
 
@@ -121,6 +121,7 @@ knitr::include_graphics(here::here("Presentations","imgs","frost.jpg"))
 
 # Do fishery inputs have risk effects?
 
+.pull-left[
 - Probably, but not often described or modeled
 
 - Fishers respond to risk
@@ -133,7 +134,11 @@ knitr::include_graphics(here::here("Presentations","imgs","frost.jpg"))
 
 
 Empirically, marginal inputs such as fuel and labor may be risk-decreasing while fixed inputs such as vessel size may be risk-increasing .small[(Asche et al., 2020)]
+]
 
+.pull-right[
+![](https://i.insider.com/53e8efd7ecad040c3d35c066?width=700)
+]
 
 ---
 
@@ -229,7 +234,7 @@ $$\begin{aligned}
 
 ---
 
-# Fisheriers are dynamic and are common pool resources
+# Fisheries are dynamic and often common pool resources
 
 - Assume fish stock has logistic growth based on the expected amount of biomass and n fishers actively harvest the resource
 
@@ -296,7 +301,7 @@ w
 ---
 name: methods
 
-## .blue[Find solutions for a symmetric Nash equilibirum and a social planner]
+## .blue[Find solutions for a symmetric Nash equilibrium and a social planner]
 
 .pull-left[
 - I need to think on how to numerically solve the NE
@@ -331,9 +336,9 @@ name: methods
 
 .bold[.blue[Index Insurance is feasible in fisheries, but will have different impacts depending on the risk effects of the input]]
 
-- Individuals respond as expected for the most part
+- Individuals for the most part respond as expected
 
-- Risk increasing inputs lead to higher use even an index insurance 
+- Index insurance rises risk increasing input use
 
 - Insurance lowers risk-decreasing use potentially opening conservation benefits just from insurance
 
@@ -341,7 +346,7 @@ name: methods
 
     - Management can substitute for insurance
     
-    - STill possible to have insurance
+    - Still possible to have insurance
     
     - Risk effects play a strong role in management's response to insurance
     
