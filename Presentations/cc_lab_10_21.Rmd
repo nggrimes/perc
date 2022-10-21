@@ -307,6 +307,8 @@ name: methods
 .pull-right[Social Planner solves all $e_i$ simultaneously 
 
 - Since its symmetric sub in $\pi=pqe_i^\alpha k(1-\frac{qne_i^\alpha}{r})+pqe_i^\beta z-c(e_i)$
+
+- "Management" proxy
 ]
 
 ## .blue[Numerical simulation]
@@ -324,6 +326,58 @@ name: methods
 
 ---
 
+# Conclussions
+
+
+.bold[.blue[Index Insurance is feasible in fisheries, but will have different impacts depending on the risk effects of the input]]
+
+- Individuals respond as expected for the most part
+
+- Risk increasing inputs lead to higher use even an index insurance 
+
+- Insurance lowers risk-decreasing use potentially opening conservation benefits just from insurance
+
+- Social Planners reduce the demand for insurance
+
+    - Management can substitute for insurance
+    
+    - STill possible to have insurance
+    
+    - Risk effects play a strong role in management's response to insurance
+    
+    - Management can restrain harmful effort increases from insurance in risk increasing inputs
+    
+---
+
+# Discussion
+
+
+## Questions
+
+- Is this a justifiable way to incorporate fishers responses to risk?
+
+- Is the institutional setting sufficient for fishers?
+
+    - How to build a numerical nash equilibrium?
+
+- Do I need to test the risk effects model on data to verify the response?
+
+    - Would probably need to expand the model to multiple inputs and risk effects
+    
+## Future goals
+
+- Expand parameter testing to make sure I don't miss anything
+
+- Design practical index insurance contracts rather than generic and simulate how fisheries would have responded
+
+
+---
+class: title-slide-section-gold, center, middle
+
+# Extra Slides
+
+---
+
 # Contributions to literature
 
 ## 1) First index insurance model built through a fishery perspective
@@ -337,33 +391,6 @@ name: methods
 ## 3) First model adding basis risk into optimal input decision
 
 - .seagreen[Index Insurance literature]
-
----
-# Discussion
-
-.bold[.blue[Index Insurance is feasible in fisheries, but will have different impacts depending on the risk effects of the input]]
-
-## Immediate Questions
-
-- Is this a justifiable way to incorporate fishers responses to risk?
-
-- Is the institutional setting sufficient for fishers?
-
-    - How to build a numerical nash equilibrium?
-
-## Future goals and questions
-
-- Move to two input model with mixed risk effects
-
-- Can we identify risk effects of a fishery without expensive and time-consuming empirical studies?
-
-- Test correlations of fisheries with potential indices
-
-
----
-class: title-slide-section-gold, center, middle
-
-# Extra Slides
 
 ---
 
