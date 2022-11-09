@@ -7,7 +7,9 @@ urlcolor: blue
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = FALSE,message=FALSE)
+
+library(tidyverse)
 ```
 
 ## Questions for Steve and Chris
@@ -25,7 +27,7 @@ Fishers are vulnerable to many risks. Stochasticity impacts both production and 
 
 \begin{equation}
 \begin{aligned}
-\pi&=qE^\alphaB-c(E,z) & B\sim N(\hat{B},\sigma_B), z\sim N(0,\sigma_z) \\
+\pi&=qE^\alpha B-c(E,z) &B\sim N(\hat{B},\sigma_B), z\sim N(0,\sigma_z) \\
 \pi&=qEB-(cE^\delta+zE^\beta) &\text{Sub in cost risk effects} \\
 \mathbb{E}(\pi)&=qE\hat{B}-cE^\delta \\
 V(\pi)&=q^2E^2{\alpha}\sigma_B+E^{2\beta}\sigma_z-2q^2E^{(\beta+\alpha)}cov(B,z) &\text{Variance properites} \\
@@ -40,6 +42,45 @@ Risk effects are captured by both the $\alpha$ and $\beta$ term for each respect
 In expectation, fishers still respond to expected biomass $\hat{B}$ and they have convex costs in expectation provided $\delta>1$. Fishers often know roughly what it will cost them to fish, but the weather realizations as they go out will impact them. Thus, they will still respond to stochasticity but now have some control over it if an input changes the amount of risk they face. 
 
 I did a few simulations to show how this model responds to insurance and without. There are a few calibration things I need to work out to prevent it from getting stuck. I identified it has to do with the shape of the $zE^\beta$ when $\beta$ is slightly negative. Now we have a risk effect model that allows fishers
+
+
+```{r}
+load(here::here("bw_run.Rdata"))
+```
+
+```{r}
+uptake_m<-comb %>% 
+  mutate(buy=ifelse(gamma>0.00001,1,0)) %>%
+  group_by(m) %>% 
+  summarize(up=sum(buy)/length(buy)) %>% 
+  ggplot(aes(x=m,y=up))+
+  geom_path(size=2)+
+  scale_y_continuous(breaks = seq(0,1,by=.25),labels=scales::percent,limits = c(0,1))+
+  labs(y="Uptake of insurance",x="Premium Load Factor (m)")+
+  theme_bw()
+
+uptake_m
+
+
+```
+
+
+
+```{r, fig.align='center',fig.cap="Figure 2. Differnces in optimal input allocation under various risk effects"}
+opt_e<-comb %>% 
+  filter(gamma>0.00001) %>% 
+  filter(l_noi>0.0001) %>% 
+  mutate(pct_diff=(l_i-l_noi)/l_noi) %>% 
+  group_by(alpha,sigmal) %>% 
+  summarize(mean=mean(pct_diff),sd=sd(pct_diff))
+
+ggplot(opt_e,aes(x=sigmal,y=mean,fill=as.character(alpha)))+
+  geom_bar(stat="identity",position="dodge",color="black")+
+  scale_fill_manual(values=c("#003660","#FEBC11","#DCE1E5"))+
+  labs(x=expression(beta),y="Percent change",title="Average Percent Change in Optimal Input Allocation with Insurance",fill=expression(alpha))+
+  scale_y_continuous(labels=scales::percent)+
+  theme_bw()
+```
 
 
 ## Dynamics and Institutions
@@ -60,7 +101,7 @@ Fishers maximize a stream of net present value for a finite horizon by selecting
 
 \begin{equation}
 \begin{aligned}
-\max_{\gamma,E}&\Sum^\T_{t=1}\rho^t\mathbb{E}[U(B_t,\gamma,E)]  \\
+\max_{\gamma,E}&\sum^T_{t=1}\rho^t\mathbb{E}[U(B_t,\gamma,E)]  \\
 B_{t+1}&=\epsilon_t(B_t+G(B,r,K)-H(E)) &\text{subject to}
 \end{aligned}
 \end{equation}
@@ -77,8 +118,9 @@ Expanding on the last set up we could move to a dynamic programming set up using
 \begin{aligned}
 V(B)&=\max_{\gamma_t,E_t}\mathbb{E}[U(\gamma,E_t,B_t)]+V_{t+1}(B_{t+1}) \\
 B_{t+1}&=\epsilon_t(B_t+G(B,r,K)-H(E)) &\text{subject to}
-\end{equation}
 \end{aligned}
+\end{equation}
+
 
 
 ## Input risk effects and insurance
