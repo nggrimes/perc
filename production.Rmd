@@ -1,0 +1,112 @@
+---
+title: "Production Function Justification"
+author: "Nathaniel Grimes"
+date: "2022-08-11"
+output: pdf_document
+urlcolor: blue
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Questions for Steve and Chris
+
+1) Is my proposed profit function suitable for modelling fisheries and insurance?
+
+2) Do you believe the notion of risk effects is important in fisheries? It is for insurance.
+
+## Input risk effects and insurance
+
+The crop insurance literature breaks down moral hazard impacts on input use into two components: "Chasing the Trigger" and "Risk Reduction". The relative strength of each component leads to changes in individual input use and aggregate impacts. Chasing the Trigger is present in indemnity insurance and leads to a reduction in inputs in order to trigger payouts, thus it always reduces input use. Risk reduction arises from insurance protecting against risk. When agents feel more protected from risk, they reoptimze their input use, which may lead to more or less use. Risk Reduction is ambiguous in direction and depends on the relationship between the input and production risk.
+
+Risk-increasing inputs lead to greater risk and variance. Pesticides are an example of risk increasing inputs in crop insurance. Pesticides improve mean yield by protecting against pests, but run the risk that they damage crops when overapplied, adding more risk into the field (Mishra et al., 2005). Insurance leads to more risk increasing inputs (Horowitz and Lichtenberg, 1993). The opposite holds true for risk decreasing inputs. Fertilizers are risk reducing by improving mean yield, while reducing the chance of losing crops (Babcock and Hennessy, 1996).
+
+Ramaswami (1993) provides theoretical justification of farmers response to risk effects and insurance. He shows how Chasing the Trigger can override risk increasing effects when the ability for farmers to control risk is smaller than their ability to control mean production. When farmers have more control, risk effects can outweigh chasing the trigger leading to net input increases if the input is strongly risk-increasing.
+
+Index insurance eliminates Chasing the Trigger, but is still subject to Risk Reduction effects. No paper has yet to fully connect index insurance and risk effects. Some papers have empirically and theoretically touched on the idea. Sibiko and Qaim (2020) found fertilizer use increased in Kenyan maize production, but proposed it was due to releasing capital constraints. Bulte and Haagsma (2021) and Muller et al., (2011) build models to test the pastoralists stocking and resting decisions in a dynamic open access setting. Both models predict increased use of the common pool resource that in turn leads to environmental degradation. Those papers serve as the closest comparisons to index insurance in fisheries. However, both papers did not allow for input risk effects and implicitly assume that stocking decisions are inherently risk increasing. Fisheries have complex input structures that may allow for inputs to either increase or decrease risk.  
+
+
+## Standard fishery models cannot handle risk effects
+
+Just and Pope (1978) define risk effects as inputs that change the variance of production. Specifically, they lay out eight postulates of what needs to be true in order to have production functions that allow for increasing and decreasing risk effects. The first three ensure that production in expectation continue to follows concavity princplies (i.e. $\mathbb{E}(y)>0; \frac{\partial \mathbb{E}(y)}{\partial X}>0;\frac{\partial^2\mathbb{E}(y)}{\partial X^2}<0$). The most important  postulate (#5) for risk effects allows marginal risk to be either increasing, decreasing, or constant as shown below:
+
+\begin{equation}
+\frac{\partial V(y)}{\partial X} \lesseqgtr 0
+\end{equation}
+
+Cobb-Douglas production functions violate this postulate by restricting marginal risk to being only positive. Classic fishery production functions like Gordon-Schaefer and Pella-Tomlinson are variations of Cobb-Douglas. For example, given a generic Cobb-Douglas form $(qz)x_1^{a_1} x_2^{a_2}$ where $z$ is a random productivity shock multiplied by a constant scaling factor $q$, inputs are separable and denoted by $x_i$ with corresponding production elasticities $a_i$, it can be shown that inputs can be aggregated into a single composite index (Hoff and Rogers 2006).
+
+\begin{equation}
+x_1^{a_1}x_2^{a_2}=\left( x_1^{\frac{a_1}{a_1+a_2}}x_2^{\frac{a_2}{a_1+a_2}}\right)\equiv (E(x_1,x_2))^{a_1+a_2}
+\end{equation}
+
+$(E(x_1,x_2))^{a_1+a_2}$ is an aggregate input index when subbed back in production still maintains a Cobb-Douglas form.
+
+\begin{equation}
+y=(qz)E^{a_1+a_2}
+\end{equation}
+
+If we replace $z$ with $B$ to indicate biomass and change our interpretation of $q$ to be the catchability coefficient as the productivity scaling factor, we arrive at the traditional Gordon-Schaefer model when $a_1+a_2=1$
+
+\begin{equation}
+y=qBE
+\end{equation}
+
+Gordon-Schaefer and Cobb-Douglas production functions do not accommodate flexible input risk effects. If we define the random productivity variables $z$ and $B$ to be distributed normally with $z\sim N(\bar{z},\sigma_z)$ and $B\sim N(\bar{B},\sigma_B$) then the marginal risks of both functions will always be greater than zero.
+
+\begin{equation}
+\begin{aligned}
+V(y)&=q^2E^{2(a_1+a_2)}\sigma_z &\text{Cobb-Douglas} \\
+V(y)&=q^2E^2\sigma_B &\text{Gordon-Schaefer} \\
+\frac{\partial V(y)}{\partial E}&=2(a_1+a_2)q^2E^{2(a_1+a_2)-1}\sigma_z  &>0\\
+\frac{\partial V(y)}{\partial E}&=2q^2E\sigma_B &>0
+\end{aligned}
+\end{equation}
+
+Thus, using these forms, I will never be able to use risk effects in my insurance model. Input use will always be risk-increasing and fisheries index insurance will always lead to greater exploitation. I believe this is one driving element of the Bulte and Haagsma (2021) and the Muller et al., (2011) models as their production functions follow Cobb-Douglas varieties.
+
+I need to deviate from the traditional production functions to accommodate risk effects. In the next section I layout the model I used in the [Shiny app design](https://nggrimes.shinyapps.io/Fishery_index_insurance/), some concerns I received from Josh from a fishery economist perspective, and my proposed workaround.
+
+## Proposed structures
+
+Just and Pope propose a slight tweak to Cobb-Douglas to allow for risk effects. They propose making the variance term in additive component of the production rather than multiplicative. I use their proposed model while demonstrating the feasibility and impact on optimal input use.
+
+\begin{equation}
+\begin{aligned}
+y&=E^\alpha+zE^\beta &z\sim N(0,\sigma_z)
+\end{aligned}
+\end{equation}
+
+Production comes from a single input where the mean elasticity $\alpha$ is less than one to ensure concavity. The random productivity shock $z$ is centered at zero so that the expectation of production is just the mean production, $\mathbb{E}(y)=E^\alpha$. Risk effects are controlled by the $\beta$ parameter so that an increase in the input changes the amount of risk and variance in the system. The marginal risk of the Just and Pope function allows for any risk effect.
+
+\begin{equation}
+\begin{aligned}
+V(y)&=E^{2\beta}\sigma_z^2\\
+\frac{\partial V(y)}{\partial E}&=2\beta E^{2\beta-1} \sigma_z^2
+\end{aligned}
+\end{equation}
+
+When $\beta >0$, $\frac{\partial V(y)}{\partial E}>0$ and E is risk increasing. Otherwise $\beta<0$, $\frac{\partial V(y)}{\partial E}<0$ and E can be defined as risk decreasing providing the flexibility we need for insurance to have interesting effects on optimal input allocation.
+
+### Problems with this structure
+
+Though economically tractable, fisheries economist would be concerned that mean production does not depend on biomass and that under this form it would be possible to harvest without any fish in the ocean. Adding a random biomass term to the equation complicates the set up and does not immediately lead to clear results. I'm trying to come up with a suitable fishery production model that allows risk effects, but maintains some of the unique characteristics of fisheries.
+
+I expand Just and Pope to be more representative of fisheries. First, in agriculture, costs are considered known and constant so more emphasis is given to production stochasticity than cost. However, in fisheries, biomass is often an inverse factor of costs in that when there are many fish, costs are lower and vice versa. Weather also impacts fisher costs quite acutely (see Holland, 2008). I'll combine these cost shocks into an aggregate random variable $z$. Thus, fishers posses a cost function $c(E,z)$ that must be convex in expectation. 
+
+Second, production remains influenced by biomass and is still a random variable. In total, I focus more on profitability variability than production variability. I believe this is what drives fishers choices more than production. 
+
+\begin{equation}
+\begin{aligned}
+\pi&=qEB-c(E,z) & B\sim N(\hat{B},\sigma_B), z\sim N(0,\sigma_z) \\
+\pi&=qEB-(cE^\delta+zE^\beta) &\text{Sub in cost risk effects} \\
+\mathbb{E}(\pi)&=qE\hat{B}-cE^\delta \\
+V(\pi)&=q^2E^2\sigma_B+E^{2\beta}\sigma_z-2q^2E^{(\beta+1)}cov(B,z) &\text{Variance properites} \\
+\frac{\partial V(\pi)}{\partial E}&=q^2E\sigma_B^2+\beta E^{2\beta-1}\sigma_z^2-q^2(\beta+1)E^\beta\rho_{B,z}\sigma_z\sigma_B
+\end{aligned}
+\end{equation}
+
+Note that $z$ and $B$ are inversely correlated in this set up so that $\rho_{B,z}<0$. When biomass goes up, the cost shock gets smaller given the relationship between biomass and shock. When $\beta>0$ this set up will always be risk-increasing like in other risk effect models. However, $\beta<0$ does not always lead to risk-decreasing since it depends on the relative weight of the covariance term, the catchability scaling factor, and the respective standard deviations. If $\beta<-1$ the covariance term will flip signs adding a greater risk-decreasing effect that ought to outweigh any risk-increasing effects of the $q^2E\sigma^2_B$ term. I'll need to experiment more, but I believe this form is the simplest way to incorporate flexible risk effects into a fishery model.
+
+In expectation, fishers still respond to expected biomass $\hat{B}$ and they have convex costs in expectation provided $\delta>1$. Fishers often know roughly what it will cost them to fish, but the weather realizations as they go out will impact them. Thus, they will still respond to stochasticity but now have some control over it if an input changes the amount of risk they face. I still need to develop stronger conceptual arguments to how exactly an input is risk-increasing or decreasing in fisheries, but I believe this form is sufficient mathematically to test the feasibility and input use effects of insurance. 
